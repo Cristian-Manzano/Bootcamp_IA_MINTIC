@@ -38,6 +38,7 @@ Cada vez que Cristian pida un prompt:
 - **Lo que sí tiene:** 6 colores (naranja, verde, rosa, rojo, azul, blanco), 3 modos de luz, se corta a la medida y carga por USB.
 - **NO afirmar** distancia exacta, que es resistente al agua ni horas de batería. Sin perros metidos al agua.
 - **Visibilidad:** en las tomas de lejos el perro tiene que verse claro.
+- **Ojo al revisar:** en 2 de 3 montajes la IA puso una correa o tira extra que brilla (playa, dachshund). Revisar siempre y cortar esa toma.
 
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
