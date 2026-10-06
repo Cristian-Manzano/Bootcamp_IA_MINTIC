@@ -52,3 +52,5 @@ Cada vez que Cristian pida un prompt:
    4. perro visto desde el carro (verde);
    5. niñas en el patio con un perro negro (rojo);
    6. pareja en la playa: se quitó en la edición porque salió una correa brillante.
+2. Aventura de noche (10 s): perro corriendo en un sendero del bosque (verde) · botón del broche junto a una carpa (naranja) · chico subiendo una montaña (rojo) · perro saltando de una camioneta (blanco) · perro junto a la fogata (azul).
+3. Razas y colores (10 s): chihuahua (rosa) · botón del broche en un golden (naranja) · dachshund en la acera (verde) · pastor alemán en un parque (azul) · pomerania en brazos de su dueña (rojo).
