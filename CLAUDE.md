@@ -59,6 +59,12 @@ Cada vez que Cristian pida un prompt:
 - El texto en pantalla puede dejar la frase a medias para dar curiosidad: "The perfect gift for a dog mom doesn't exis.. 😮". El ángulo de regalo sirve para Halloween y Navidad.
 - Siempre responder los comentarios con el link por mensaje (ManyChat en Instagram y Facebook; a mano en TikTok).
 
+## Marca
+- Nombre: **KINDEAR GLOW** (LED Dog Collar). Logo: "KINDEAR" en blanco, espaciado, sobre "GLOW" en letras de neón (G verde, L azul, O rosa en forma de collar con broche blanco, W amarilla) en fondo azul oscuro / morado.
+- Caja: azul marino, perro negro con collar verde, íconos "360° GLOW", "USB RECHARGEABLE", "3 LIGHT MODES". Usar la foto de la caja como referencia en Higgsfield para que la IA la copie igual.
+- La W amarilla es solo diseño: en los videos los collares van en los 6 colores reales, nunca amarillo.
+- Próximo video (idea de Cristian, esperando sus referencias): pareja con su perro en el supermercado; el perro ve la caja KINDEAR GLOW y se emociona; la mujer se desmaya (comedia); transición al perro de noche con el collar; montaje de varios perros jugando con el collar; cierre con la caja y GLOW.
+
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
 - No agregar funciones nuevas a la app si no las pide.
