@@ -50,6 +50,13 @@ Cada vez que Cristian pida un prompt:
 - Publicar unos videos con este texto y otros sin texto, y comparar en "Resultados" las vistas y el % que ve el video completo.
 - Día 1: Montaje con texto (`montaje_texto.mp4`), a las 7 p. m.
 
+## Descripción de las publicaciones (formato aprobado)
+- Primero, una sola frase con la palabra para comentar: Comment "GLOW" and I'll send you the link 🐶✨
+- Al final, 3–5 hashtags (#dogmom #ledcollar #dogsoftiktok #nightwalk…).
+- Referencias: Rain Coded ("Comment GREEN if you would buy this") y Novax ("Comenta moto para info", 39,7 k likes, ángulo de regalo).
+- El texto en pantalla puede dejar la frase a medias para dar curiosidad: "The perfect gift for a dog mom doesn't exis.. 😮". El ángulo de regalo sirve para Halloween y Navidad.
+- Siempre responder los comentarios con el link por mensaje (ManyChat en Instagram y Facebook; a mano en TikTok).
+
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
 - No agregar funciones nuevas a la app si no las pide.
