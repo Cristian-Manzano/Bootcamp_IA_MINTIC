@@ -49,6 +49,7 @@ Cada vez que Cristian pida un prompt:
 ## Prueba en curso: con texto vs. sin texto
 - Publicar unos videos con este texto y otros sin texto, y comparar en "Resultados" las vistas y el % que ve el video completo.
 - Día 1: Montaje con texto (`montaje_texto.mp4`), a las 7 p. m.
+- Videos 4–6 ya tienen el texto nuevo y GLOW: `antes_despues_texto.mp4` (12,6 s), `max_texto.mp4`, `reto_texto.mp4`. El texto viejo de la IA se borró con delogo.
 
 ## Descripción de las publicaciones (formato aprobado)
 - REGLA: la palabra para comentar es SIEMPRE una sola y la misma: GLOW. En la descripción y en el texto final del video. Nunca otra (ni "color" ni frases).
