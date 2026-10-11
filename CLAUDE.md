@@ -65,6 +65,13 @@ Cada vez que Cristian pida un prompt:
 - La W amarilla es solo diseño: en los videos los collares van en los 6 colores reales, nunca amarillo.
 - Próximo video (idea de Cristian, esperando sus referencias): pareja con su perro en el supermercado; el perro ve la caja KINDEAR GLOW y se emociona; la mujer se desmaya (comedia); transición al perro de noche con el collar; montaje de varios perros jugando con el collar; cierre con la caja y GLOW.
 
+- Primer intento del supermercado (7,5 cr, editado gratis → `super_texto.mp4`). Errores a evitar en el próximo:
+  - el perro ya llevaba collar antes de ver la caja → en el supermercado debe llevar SOLO arnés, nada en el cuello;
+  - salía una sola caja → pedir un estante lleno de decenas de cajas KINDEAR GLOW;
+  - la mujer no se desmayó → describir el desmayo paso a paso;
+  - la toma de varios perros jugando en el parque salió con correas brillantes por el piso → nada de grupos de perros con correas; un perro por toma.
+- Para usar la caja: en la app, la foto "Mascota" está cambiada por la caja (media 4b4276af-fe8f-496b-9eea-f001ec8dcc21). La del perro negro es 51cfc608-23e6-4b2e-be92-68163558c8c3. Estructura "Trend de cortes", no "Montaje" (porque Montaje no manda la segunda foto).
+
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
 - No agregar funciones nuevas a la app si no las pide.
