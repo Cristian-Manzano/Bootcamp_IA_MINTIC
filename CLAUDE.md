@@ -150,3 +150,6 @@ Cada vez que Cristian pida un prompt:
   - Ganancia aproximada: ~$14.70 por 1 collar y ~$23 por el paquete de 2.
   - Meta: US$1.000 ≈ 55–65 pedidos.
   - Pendiente: confirmar el costo con envío a EE. UU.
+- Calidad (11 oct): los días 1–3 se publican tal cual, en 480p generado → 1080. Si les va bien, desde el día 4 se generan en 720p (12 cr por 12 s).
+  - Mejora gratis con Real-ESRGAN: mejora la imagen, pero tarda ~35 min por video sin GPU. Se canceló por ahora.
+  - Script en el scratchpad: sr.py + realesr-general-x4v3.pth.
