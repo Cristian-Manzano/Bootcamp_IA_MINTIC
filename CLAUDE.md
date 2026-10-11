@@ -70,7 +70,8 @@ Cada vez que Cristian pida un prompt:
   - salía una sola caja → pedir un estante lleno de decenas de cajas KINDEAR GLOW;
   - la mujer no se desmayó → describir el desmayo paso a paso;
   - la toma de varios perros jugando en el parque salió con correas brillantes por el piso → nada de grupos de perros con correas; un perro por toma.
-- Para usar la caja: en la app, la foto "Mascota" está cambiada por la caja (media 4b4276af-fe8f-496b-9eea-f001ec8dcc21). La del perro negro es 51cfc608-23e6-4b2e-be92-68163558c8c3. Estructura "Trend de cortes", no "Montaje" (porque Montaje no manda la segunda foto).
+- Estado de las fotos en la app: "Producto" = la CAJA (4b4276af-fe8f-496b-9eea-f001ec8dcc21), de forma temporal. La foto del collar es 24924f02-6783-41ee-a411-3177ac4b5624; devolverla cuando se termine el video de la caja. "Mascota" = el perro negro otra vez (51cfc608-23e6-4b2e-be92-68163558c8c3). Con "Montaje rápido" se manda una sola foto (Producto).
+- Receta que funciona: 1 sola foto de referencia; collar siempre puesto; tomas de 2 s simples; un solo cambio (el broche que se enciende); todo en positivo (ej. pañoleta roja en vez de "sin collar"); acciones fáciles (reír, taparse la boca; no desmayos); un perro por toma.
 
 ## Método para no perder créditos (acordado después del supermercado)
 - Por qué los primeros salieron bien: en los montajes el collar sale puesto y encendido en todas las tomas. A la IA le es fácil, porque solo copia la foto del collar. Los errores se cortaban en edición.
