@@ -70,7 +70,7 @@ Cada vez que Cristian pida un prompt:
   - salía una sola caja → pedir un estante lleno de decenas de cajas KINDEAR GLOW;
   - la mujer no se desmayó → describir el desmayo paso a paso;
   - la toma de varios perros jugando en el parque salió con correas brillantes por el piso → nada de grupos de perros con correas; un perro por toma.
-- Estado de las fotos en la app: "Producto" = la caja nueva con el collar verde y SIN perro (6596d2a6-47d4-4b16-a679-bedf9b4b6341); funciona bien como única foto en "Montaje rápido". Foto solo del collar: 24924f02-6783-41ee-a411-3177ac4b5624. Caja vieja con perro: 4b4276af-fe8f-496b-9eea-f001ec8dcc21. "Mascota" = el perro negro (51cfc608-23e6-4b2e-be92-68163558c8c3).
+- Estado de las fotos en la app: "Producto" = la foto del COLLAR (24924f02-6783-41ee-a411-3177ac4b5624), la del montaje ganador; se volvió a poner para regresar a la fórmula del montaje. Caja nueva sin perro: 6596d2a6-47d4-4b16-a679-bedf9b4b6341 (usar solo si se quiere la caja). Caja vieja con perro: 4b4276af-fe8f-496b-9eea-f001ec8dcc21. "Mascota" = el perro negro (51cfc608-23e6-4b2e-be92-68163558c8c3).
 - Receta que funciona: 1 sola foto de referencia; collar siempre puesto; tomas de 2 s simples; un solo cambio (el broche que se enciende); todo en positivo (ej. pañoleta roja en vez de "sin collar"); acciones fáciles (reír, taparse la boca; no desmayos); un perro por toma.
 
 ## Método para no perder créditos (acordado después del supermercado)
