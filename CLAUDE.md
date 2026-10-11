@@ -82,6 +82,7 @@ Cada vez que Cristian pida un prompt:
   2. Cristian aprueba la imagen;
   3. se anima esa imagen como start_image, 5 s a 480p = 2,5 cr, mandando solo las fotos que deben salir (en "antes del collar", nunca la foto del collar).
 - Regla 3: probar las ideas nuevas en piezas de ≤6 s, nunca el video completo. Yo armo y edito el video gratis.
+- Comprobado (supermercado final → `super2_texto.mp4`): la toma "antes del collar" se generó SIN ninguna foto (solo texto, 5 s, 2,5 cr) y salió limpia: golden con arnés negro y pañoleta roja dentro del carrito. El resto se pegó gratis con tomas ya generadas.
 - Regla 4: antes de que Cristian envíe, revisar el prompt contra la lista de fallas conocidas: negaciones, desmayos o comedia física, grupos de perros con correas, texto en pantalla, cambios de estado.
 
 ## Preferencias de Cristian
