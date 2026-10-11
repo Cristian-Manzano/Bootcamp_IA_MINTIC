@@ -153,3 +153,12 @@ Cada vez que Cristian pida un prompt:
 - Calidad (11 oct): los días 1–3 se publican tal cual, en 480p generado → 1080. Si les va bien, desde el día 4 se generan en 720p (12 cr por 12 s).
   - Mejora gratis con Real-ESRGAN: mejora la imagen, pero tarda ~35 min por video sin GPU. Se canceló por ahora.
   - Script en el scratchpad: sr.py + realesr-general-x4v3.pth.
+
+## Producto 2 en prueba: linternas de silicona con forma de animalitos (para niños)
+- Proveedor elegido: LOKEY Store (AliExpress, item 3256811988317114).
+  - Costo: US$14,69 con envío gratis a EE. UU., ~11 días. Máximo 1 pieza por cliente.
+  - 9 modelos: cocodrilo, tortuga, ciervo, unicornio, ballena/delfín, etc.
+- Respaldo: Fashion Home Life Store, US$3,97 + US$9,63 de envío, ~17 días, sin límite por cliente, sin reseñas.
+- Precios sugeridos: 1 por $29.99 (~$13,8 de ganancia) · 2 por $49.99 (~$18,4) · 3 por $64.99.
+- Ángulo: regalo de Navidad para niños; encaja con la marca GLOW.
+- Riesgo: la forma alargada puede generar chistes de doble sentido. Mostrarlo siempre con niños, cuentos y animalitos.
