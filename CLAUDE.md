@@ -70,7 +70,7 @@ Cada vez que Cristian pida un prompt:
   - salía una sola caja → pedir un estante lleno de decenas de cajas KINDEAR GLOW;
   - la mujer no se desmayó → describir el desmayo paso a paso;
   - la toma de varios perros jugando en el parque salió con correas brillantes por el piso → nada de grupos de perros con correas; un perro por toma.
-- Estado de las fotos en la app: "Producto" = la CAJA (4b4276af-fe8f-496b-9eea-f001ec8dcc21), de forma temporal. La foto del collar es 24924f02-6783-41ee-a411-3177ac4b5624; devolverla cuando se termine el video de la caja. "Mascota" = el perro negro otra vez (51cfc608-23e6-4b2e-be92-68163558c8c3). Con "Montaje rápido" se manda una sola foto (Producto).
+- Estado de las fotos en la app: "Producto" = la caja nueva con el collar verde y SIN perro (6596d2a6-47d4-4b16-a679-bedf9b4b6341); funciona bien como única foto en "Montaje rápido". Foto solo del collar: 24924f02-6783-41ee-a411-3177ac4b5624. Caja vieja con perro: 4b4276af-fe8f-496b-9eea-f001ec8dcc21. "Mascota" = el perro negro (51cfc608-23e6-4b2e-be92-68163558c8c3).
 - Receta que funciona: 1 sola foto de referencia; collar siempre puesto; tomas de 2 s simples; un solo cambio (el broche que se enciende); todo en positivo (ej. pañoleta roja en vez de "sin collar"); acciones fáciles (reír, taparse la boca; no desmayos); un perro por toma.
 
 ## Método para no perder créditos (acordado después del supermercado)
@@ -100,3 +100,11 @@ Cada vez que Cristian pida un prompt:
    6. pareja en la playa: se quitó en la edición porque salió una correa brillante.
 2. Aventura de noche (10 s): perro corriendo en un sendero del bosque (verde) · botón del broche junto a una carpa (naranja) · chico subiendo una montaña (rojo) · perro saltando de una camioneta (blanco) · perro junto a la fogata (azul).
 3. Razas y colores (10 s): chihuahua (rosa) · botón del broche en un golden (naranja) · dachshund en la acera (verde) · pastor alemán en un parque (azul) · pomerania en brazos de su dueña (rojo).
+4. Fiesta de perros (12 s generados → 10 s editados, `perros_glow_texto.mp4`, frase "When your dogs throw their own glow party 🐶"):
+   1. border collie y perro café persiguiéndose en el patio al anochecer (azul);
+   2. broche en un labrador chocolate (verde);
+   3. boston terrier y bulldog jugando en la sala, chica riéndose (rojo);
+   4. corgi en el porche con una pareja riéndose (naranja);
+   5. pitbull y poodle en una cancha de noche (rosa): recortada a 1 s porque salió luz verde de más;
+   6. perro dormido junto a la caja en la mesa de noche (azul).
+   - Aprendido: 2 perros por toma con el MISMO color salió bien de cerca (patio, sala). En tomas de lejos de noche salen luces de otro color.
