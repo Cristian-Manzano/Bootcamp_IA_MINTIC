@@ -119,3 +119,11 @@ Cada vez que Cristian pida un prompt:
      5. abuelo con un schnauzer en el porche (blanco);
      6. familia con un pug y luces de Navidad (naranja).
    - Receta: un inicio cómico SIN perro + el montaje puro.
+   - Prueba de ganchos (mismo video, distinto inicio; el texto sale desde el cuadro 1, sin fundido):
+     - A `super_montaje_A.mp4`: abre con el galgo, texto "POV: you found the collar everyone's asking about 😭".
+     - B `super_montaje_B.mp4`: abre con la mujer gritando de sorpresa, texto "I was NOT ready for this aisle 😭".
+     - C `super_montaje_C.mp4`: abre con el broche, texto "Wait for it…".
+     - Comparar la retención en el segundo 3 (Analíticas de TikTok).
+## Plan de publicación (desde el 12 oct 2026)
+- 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
+- Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
