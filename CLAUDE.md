@@ -127,3 +127,12 @@ Cada vez que Cristian pida un prompt:
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
+- Versiones en 1080 listas para publicar (A = el original):
+  - `fiesta_A/B/C_1080.mp4`:
+    - B abre con el broche, "Wait for it…";
+    - C abre con los perros en la sala, "My dogs every single night now 😂".
+  - `golden_A/B/C_1080.mp4`:
+    - B abre con el golden corriendo de noche, "POV: he picked his own gift at the store 😂";
+    - C abre con el salto en el carrito, "He saw these and refused to leave 😭".
+  - `super_montaje_A/B/C_1080.mp4`.
+- Regla: nunca dos versiones del mismo video el mismo día.
