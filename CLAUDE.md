@@ -136,3 +136,17 @@ Cada vez que Cristian pida un prompt:
     - C abre con el salto en el carrito, "He saw these and refused to leave 😭".
   - `super_montaje_A/B/C_1080.mp4`.
 - Regla: nunca dos versiones del mismo video el mismo día.
+
+## Tienda (kindear.vercel.app/glow)
+- Se edita desde el chat "página de producto" de Cristian. El código no está en GitHub, así que yo no la puedo editar directo: le paso las órdenes listas para pegar.
+- Estado al 11 oct 2026:
+  - logo GLOW y colores de marca;
+  - 6 colores;
+  - paquetes 1 / 2 / 3: $21.99 / $36.99 / $49.99, eligiendo color y talla por collar;
+  - "Order by Nov 28 for Christmas";
+  - pago por PayPal.
+- Link para responder GLOW: kindear.vercel.app/glow.
+- Proveedor: ~US$6 por collar (precio sin el descuento de bienvenida). Tiene 7 colores.
+  - Ganancia aproximada: ~$14.70 por 1 collar y ~$23 por el paquete de 2.
+  - Meta: US$1.000 ≈ 55–65 pedidos.
+  - Pendiente: confirmar el costo con envío a EE. UU.
