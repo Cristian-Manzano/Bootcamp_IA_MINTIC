@@ -108,3 +108,4 @@ Cada vez que Cristian pida un prompt:
    5. pitbull y poodle en una cancha de noche (rosa): recortada a 1 s porque salió luz verde de más;
    6. perro dormido junto a la caja en la mesa de noche (azul).
    - Aprendido: 2 perros por toma con el MISMO color salió bien de cerca (patio, sala). En tomas de lejos de noche salen luces de otro color.
+5. Husky en tienda de mascotas (Chispa, un solo prompt, 12 s, 6 cr → 9,2 s editados, `husky_texto.mp4`): husky con pañoleta roja aúlla y la dueña se ríe (SIN collar: la pañoleta que tapa el cuello funcionó) · torre de cajas · broche en un husky (rosa) · niña con shih tzu (verde) · perro que salta a los brazos del dueño (azul). Se cortó una toma por una correa roja que brillaba. A Cristian no le gustó: se perdió la esencia de recopilación de los primeros videos.
