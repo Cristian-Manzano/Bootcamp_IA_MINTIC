@@ -72,6 +72,17 @@ Cada vez que Cristian pida un prompt:
   - la toma de varios perros jugando en el parque salió con correas brillantes por el piso → nada de grupos de perros con correas; un perro por toma.
 - Para usar la caja: en la app, la foto "Mascota" está cambiada por la caja (media 4b4276af-fe8f-496b-9eea-f001ec8dcc21). La del perro negro es 51cfc608-23e6-4b2e-be92-68163558c8c3. Estructura "Trend de cortes", no "Montaje" (porque Montaje no manda la segunda foto).
 
+## Método para no perder créditos (acordado después del supermercado)
+- Por qué los primeros salieron bien: en los montajes el collar sale puesto y encendido en todas las tomas. A la IA le es fácil, porque solo copia la foto del collar. Los errores se cortaban en edición.
+- Por qué falló el supermercado: pedía "sin collar" al principio y "con collar" después. La IA falla con las negaciones y con los cambios de estado, y además la app le manda la foto del collar y la caja (que también trae un perro con collar), así que lo copia. Los desmayos y la comedia física también le salen mal.
+- Regla 1: el formato principal es el montaje con el collar siempre puesto.
+- Regla 2: si una toma necesita que el collar NO aparezca (o un momento exacto), se hace por partes:
+  1. primero una imagen fija (Nano Banana 2: 1,5 cr por la app/MCP, o gratis en la web de Higgsfield con el ilimitado);
+  2. Cristian aprueba la imagen;
+  3. se anima esa imagen como start_image, 5 s a 480p = 2,5 cr, mandando solo las fotos que deben salir (en "antes del collar", nunca la foto del collar).
+- Regla 3: probar las ideas nuevas en piezas de ≤6 s, nunca el video completo. Yo armo y edito el video gratis.
+- Regla 4: antes de que Cristian envíe, revisar el prompt contra la lista de fallas conocidas: negaciones, desmayos o comedia física, grupos de perros con correas, texto en pantalla, cambios de estado.
+
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
 - No agregar funciones nuevas a la app si no las pide.
