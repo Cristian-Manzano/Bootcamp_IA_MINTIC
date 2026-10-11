@@ -109,3 +109,13 @@ Cada vez que Cristian pida un prompt:
    6. perro dormido junto a la caja en la mesa de noche (azul).
    - Aprendido: 2 perros por toma con el MISMO color salió bien de cerca (patio, sala). En tomas de lejos de noche salen luces de otro color.
 5. Husky en tienda de mascotas (Chispa, un solo prompt, 12 s, 6 cr → 9,2 s editados, `husky_texto.mp4`): husky con pañoleta roja aúlla y la dueña se ríe (SIN collar: la pañoleta que tapa el cuello funcionó) · torre de cajas · broche en un husky (rosa) · niña con shih tzu (verde) · perro que salta a los brazos del dueño (azul). Se cortó una toma por una correa roja que brillaba. A Cristian no le gustó: se perdió la esencia de recopilación de los primeros videos.
+6. Súper + montaje (15 s, `super_montaje_texto.mp4`, frase "Me when I finally found THE collar 😭"). A Cristian le gustó más; volvió la esencia.
+   - Inicio, 5 s generados aparte con la foto de la caja (2,5 cr): la mujer ve la torre de cajas, se tapa la boca y corre a agarrar una; el esposo se ríe. En la toma NO hay perro.
+   - Montaje en Chispa con la foto del collar (6 cr):
+     1. galgo corriendo en un campo (rosa);
+     2. broche en un bulldog inglés (verde);
+     3. chico en selfie con beagle en un mirador (azul);
+     4. caniche en la terraza de un café (rojo);
+     5. abuelo con un schnauzer en el porche (blanco);
+     6. familia con un pug y luces de Navidad (naranja).
+   - Receta: un inicio cómico SIN perro + el montaje puro.
