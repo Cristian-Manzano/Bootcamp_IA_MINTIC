@@ -175,6 +175,7 @@ Cada vez que Cristian pida un prompt:
   - 9 modelos: cocodrilo, tortuga, ciervo, unicornio, ballena/delfín, etc.
 - Respaldo: Fashion Home Life Store, US$3,97 + US$9,63 de envío, ~17 días, sin límite por cliente, sin reseñas.
 - Precios sugeridos: 1 por $29.99 (~$13,8 de ganancia) · 2 por $49.99 (~$18,4) · 3 por $64.99.
+- Página /buddies (12 oct): solo se vende 1 por pedido a $29.99 (por el límite de LOKEY); se quitaron los paquetes de 2 y 3. Sin garantía de devolución: "Satisfaction guaranteed" (Cristian no cubre devoluciones). Foto principal = niño leyendo con el tiburón; galería: sombras, ciervo en la media, niña con unicornio (corregir: salió bajito como peluche), los 9 en la repisa, USB. Fotos hechas gratis en ChatGPT; regla: linterna larga, en horizontal, encendida, una por foto, nunca vertical ni en abanico.
 - Ángulo: regalo de Navidad para niños; encaja con la marca GLOW.
 - Riesgo: la forma alargada puede generar chistes de doble sentido. Mostrarlo siempre con niños, cuentos y animalitos.
 
