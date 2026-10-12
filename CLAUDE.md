@@ -132,7 +132,7 @@ Cada vez que Cristian pida un prompt:
    - Orden editado: mujer → broche → resto. Se cortó el inicio del aussie: el frisbee salió como aro rojo brillante.
    - Re-edición: se quitó la abuela (carcajada falsa) y se acortaron el papá, la mujer y la familia. Se borraron los `dogs15` de 15 s.
    - Publicación en IG (12 oct): v2 a las 3:30 p. m. con "Total Eclipse of the Heart"; v1 y v4 en la noche (8:45–10:30 p. m.); el resto, al día siguiente. Cada versión con una canción distinta para ver cuál gana (como yumekawaii): v1 Lovely Day · v2 Total Eclipse of the Heart · v3 Walking on Sunshine · v4 Dreams (Fleetwood Mac) · v5 Here Comes the Sun · v6 Mr. Blue Sky.
-   - 6 versiones, solo cambia el texto de arriba; CTA "GLOW" desde el s 9,8:
+   - 6 versiones, solo cambia el texto de arriba; CTA desde el s 9,8: la 1 (POV) dice "Comment GLOW if you want one ✨"; las 2–6 dicen "Comment GLOW if you NEED one 🧡" (copiado de yumekawaii).
      1. Dog moms, this one's for you 🐶
      2. POV: you found the collar everyone's asking about 😭
      3. Golden retriever owners NEED this 😭
