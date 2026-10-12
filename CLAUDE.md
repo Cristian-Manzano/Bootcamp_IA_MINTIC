@@ -131,6 +131,7 @@ Cada vez que Cristian pida un prompt:
    - Montaje 720p 15 s (15 cr) con la foto del collar: golden corriendo de noche (naranja) · broche en un labrador negro (verde) · frenchie lame la cara a un papá (azul) · beagle atrapa una pelota con niñas (rosa) · chico en selfie con husky (rojo) · aussie salta en un parque (blanco) · abuela con un cavalier (rosa) · familia con golden y luces de Navidad (naranja).
    - Orden editado: mujer → broche → resto. Se cortó el inicio del aussie: el frisbee salió como aro rojo brillante.
    - Re-edición: se quitó la abuela (carcajada falsa) y se acortaron el papá, la mujer y la familia. Se borraron los `dogs15` de 15 s.
+   - Publicación en IG (12 oct): v2 a las 3:30 p. m. con "Total Eclipse of the Heart"; v1 y v4 en la noche (8:45–10:30 p. m.); el resto, al día siguiente. Cada versión con una canción distinta para ver cuál gana (como yumekawaii): v1 Lovely Day · v2 Total Eclipse of the Heart · v3 Walking on Sunshine · v4 Dreams (Fleetwood Mac) · v5 Here Comes the Sun · v6 Mr. Blue Sky.
    - 6 versiones, solo cambia el texto de arriba; CTA "GLOW" desde el s 9,8:
      1. Dog moms, this one's for you 🐶
      2. POV: you found the collar everyone's asking about 😭
