@@ -126,7 +126,7 @@ Cada vez que Cristian pida un prompt:
      - B `super_montaje_B.mp4`: abre con la mujer gritando de sorpresa, texto "I was NOT ready for this aisle 😭".
      - C `super_montaje_C.mp4`: abre con el broche, texto "Wait for it…".
      - Comparar la retención en el segundo 3 (Analíticas de TikTok).
-7. Mujer 720 + montaje 15 s (método yumekawaii, 12 oct, 20 cr → `dogs12_1…6_1080.mp4`, 12,3 s, SIN audio de la IA: se pone la canción en la app):
+7. Mujer 720 + montaje 15 s (método yumekawaii, 12 oct, 20 cr → carpeta `publicar_dogs12/` (archivos numerados por orden de publicación: 1 = v2 POV, 2 = v1, 3 = v4, 4 = v3, 5 = v5, 6 = v6), 12,3 s, SIN audio de la IA: se pone la canción en la app):
    - Mujer: 5 s desde su propio cuadro como start_image (720p, 5 cr): manos en la boca → corre y abraza una caja riéndose. Salió perfecta.
    - Montaje 720p 15 s (15 cr) con la foto del collar: golden corriendo de noche (naranja) · broche en un labrador negro (verde) · frenchie lame la cara a un papá (azul) · beagle atrapa una pelota con niñas (rosa) · chico en selfie con husky (rojo) · aussie salta en un parque (blanco) · abuela con un cavalier (rosa) · familia con golden y luces de Navidad (naranja).
    - Orden editado: mujer → broche → resto. Se cortó el inicio del aussie: el frisbee salió como aro rojo brillante.
