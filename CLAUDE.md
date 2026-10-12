@@ -124,6 +124,17 @@ Cada vez que Cristian pida un prompt:
      - B `super_montaje_B.mp4`: abre con la mujer gritando de sorpresa, texto "I was NOT ready for this aisle 😭".
      - C `super_montaje_C.mp4`: abre con el broche, texto "Wait for it…".
      - Comparar la retención en el segundo 3 (Analíticas de TikTok).
+7. Mujer 720 + montaje 15 s (método yumekawaii, 12 oct, 20 cr → `dogs15_1…6_1080.mp4`, 15,3 s):
+   - Mujer: 5 s desde su propio cuadro como start_image (720p, 5 cr): manos en la boca → corre y abraza una caja riéndose. Salió perfecta.
+   - Montaje 720p 15 s (15 cr) con la foto del collar: golden corriendo de noche (naranja) · broche en un labrador negro (verde) · frenchie lame la cara a un papá (azul) · beagle atrapa una pelota con niñas (rosa) · chico en selfie con husky (rojo) · aussie salta en un parque (blanco) · abuela con un cavalier (rosa) · familia con golden y luces de Navidad (naranja).
+   - Orden editado: mujer → broche → resto. Se cortó el inicio del aussie: el frisbee salió como aro rojo brillante.
+   - 6 versiones, solo cambia el texto de arriba; CTA "GLOW" en los últimos 2,5 s:
+     1. Dog moms, this one's for you 🐶
+     2. POV: you found the collar everyone's asking about 😭
+     3. Golden retriever owners NEED this 😭
+     4. Night walks will never be the same 🌙
+     5. The perfect gift for a dog mom doesn't exis.. 😮
+     6. My dog every single night now 😂
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
