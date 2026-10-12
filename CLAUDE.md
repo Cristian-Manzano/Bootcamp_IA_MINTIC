@@ -173,3 +173,9 @@ Cada vez que Cristian pida un prompt:
   - mensaje con el botón "Get my GLOW collar" → https://kindear.vercel.app/glow.
 - Instagram es donde funciona: el Reel de súper + montaje A llegó a ~5.000 vistas y 70 likes, y la gente lo ve hasta el segundo 9. TikTok y Facebook siguen por debajo de 300.
   - Portada con la cara de sorpresa de la mujer, elegida por Cristian.
+
+## Referencia de contenido viral
+- Análisis de reels de @yumekawaiicompany: `investigacion/analisis-yumekawaii.md`
+- Datos: `investigacion/reels-yumekawaii.csv` y `investigacion/comentarios-top5.csv`
+- Úsalo siempre que trabajemos en guiones, videos, ganchos o estrategia de TikTok/Instagram.
+- No inventes datos: si algo dice "no visible", no se sabe.
