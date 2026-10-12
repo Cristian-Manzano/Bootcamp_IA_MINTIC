@@ -162,3 +162,14 @@ Cada vez que Cristian pida un prompt:
 - Precios sugeridos: 1 por $29.99 (~$13,8 de ganancia) · 2 por $49.99 (~$18,4) · 3 por $64.99.
 - Ángulo: regalo de Navidad para niños; encaja con la marca GLOW.
 - Riesgo: la forma alargada puede generar chistes de doble sentido. Mostrarlo siempre con niños, cuentos y animalitos.
+
+## ManyChat (Instagram @kindearglow)
+- Cuenta de Instagram cambiada a Creator (tiene más música que Business).
+- Plan Essential en prueba gratis desde el 11 oct 2026; primer cobro de US$17 el 26 oct 2026. Recordatorio para decidir: 23 oct, 9 a. m.
+- Automatización LIVE:
+  - palabras clave: GLOW / glow / Glow / link / price;
+  - 3 respuestas públicas;
+  - mensaje inicial con el botón "Send me the link";
+  - mensaje con el botón "Get my GLOW collar" → https://kindear.vercel.app/glow.
+- Instagram es donde funciona: el Reel de súper + montaje A llegó a ~5.000 vistas y 70 likes, y la gente lo ve hasta el segundo 9. TikTok y Facebook siguen por debajo de 300.
+  - Portada con la cara de sorpresa de la mujer, elegida por Cristian.
