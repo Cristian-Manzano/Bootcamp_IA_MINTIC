@@ -139,6 +139,9 @@ Cada vez que Cristian pida un prompt:
      4. Night walks will never be the same 🌙
      5. The perfect gift for a dog mom doesn't exis.. 😮
      6. My dog every single night now 😂
+8. Recopilación 13 oct (gratis, solo edición → carpeta `publicar_13oct/`, ~14 s, sin audio). Los `dogs12` de ayer no pasaron de 300 vistas; el que funcionó fue súper + montaje A (galgo → mujer vieja). Fórmula copiada: perro corriendo de noche hacia la cámara (1,7 s) → mujer 480p original (intro 14–88) → broche → 4 escenas → cierre con CTA de colores.
+   1. galgo · POV · cierre pug familia; 2. golden noche · Dog moms · cierre familia golden; 3. labrador sendero verde · Night walks · cierre pug; 4. pastor alemán · Gift · cierre familia golden; 5. husky · Every night · cierre pug; 6. golden con arnés · Golden owners · cierre familia golden.
+   - Script: scratchpad d13/build3.py (lista de fuentes) + compose_cyc2.py (CTA en los últimos 2,5 s).
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
