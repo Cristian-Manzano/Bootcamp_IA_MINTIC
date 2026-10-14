@@ -144,6 +144,8 @@ Cada vez que Cristian pida un prompt:
    - Script: scratchpad d13/build3.py (lista de fuentes) + compose_cyc2.py (CTA en los últimos 2,5 s).
    - Resultados IG (13 oct): 1 galgo POV 11:50 a. m. = 5.600 · 3 labrador 6:30 p. m. = 2.000 · 4 pastor 8:45 p. m. = 1.683 · 5 husky 9:30 p. m. = 266 · 6 golden arnés 10:15 p. m. = 241 (el 2 no se publicó). Las vistas bajan en el orden de publicación: con 5 casi iguales el mismo día, Instagram reparte menos a los últimos. Galgo + POV ganó dos veces (5.000 y 5.600).
    - Aprendido: máximo 2–3 videos al día, separados 3 h o más. Ganan los ganchos con un perro solo corriendo de frente hacia la cámara, fondo oscuro y collar muy visible (galgo rosa, labrador verde). Pierden los que entran de lado o con arnés.
+9. Ganchos nuevos 14 oct (4 × 2,5 cr = 10 cr, 480p, solo texto + foto del collar, prompt "runs straight toward the camera, centered, dark background, collar is the only glowing object"). Salieron limpios los 4: dálmata rosa, border collie azul, labrador negro verde, weimaraner naranja. Se usa el último 1,7 s (perro cerca). Carpeta `publicar_14oct/`:
+   1. dálmata · POV · mujer A (3 s) · 2. dálmata · POV · mujer B (5 s: sorpresa → corre → abraza la caja, toma 720) — prueba A/B, publicar a la misma hora en días distintos · 3. border collie · Night walks · 4. weimaraner · Gift · 5. labrador negro · Dog moms.
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
