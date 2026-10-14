@@ -87,6 +87,11 @@ Cada vez que Cristian pida un prompt:
 - Comprobado (supermercado final → `super2_texto.mp4`): la toma "antes del collar" se generó SIN ninguna foto (solo texto, 5 s, 2,5 cr) y salió limpia: golden con arnés negro y pañoleta roja dentro del carrito. El resto se pegó gratis con tomas ya generadas.
 - Regla 4: antes de que Cristian envíe, revisar el prompt contra la lista de fallas conocidas: negaciones, desmayos o comedia física, grupos de perros con correas, texto en pantalla, cambios de estado.
 
+## META DE CADA VIDEO: 50.000 vistas (14 oct)
+- Cada video se diseña para pasar 50.000 vistas. Hoy nos frenamos en ~5.000: la retención está bien, falta que la gente COMPARTA (meta: compartidos ≥1 %, me gusta ≥4 %, guardados ≥1 %).
+- Antes de entregar cada video, revisar: ¿hay una razón para mandárselo a alguien? (texto "send this to / tag…", historia que todo dueño vivió, humor) ¿hay escenas nuevas, no repetidas? ¿el gancho es un perro de frente o algo que da curiosidad en 1 s?
+- Pedir a Cristian las estadísticas de cada Reel (omisiones, compartidos, me gusta, guardados) y comparar contra esas metas.
+
 ## Preferencias de Cristian
 - Preguntar antes de gastar créditos de Higgsfield.
 - No agregar funciones nuevas a la app si no las pide.
