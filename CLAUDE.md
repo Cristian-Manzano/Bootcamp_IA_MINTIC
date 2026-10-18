@@ -96,6 +96,7 @@ Cada vez que Cristian pida un prompt:
 - Preguntar antes de gastar créditos de Higgsfield.
   - REGLA (18 oct): antes de generar, confirmar el NÚMERO EXACTO de tomas y los créditos totales. Generar solo lo confirmado (el 18 oct gasté 15 cr cuando él entendía 2 tomas).
 - Lo que quiere en los videos de noche: noche CERRADA, muy tarde, casi sin luz (parque oscuro, calle sin faroles); la idea "mi perro se perdió en la oscuridad y solo veo su collar". Nada de barrios iluminados. Gancho: la mujer del súper.
+  - NO empeorar ni ensuciar la imagen en la edición (no bajar calidad ni agregar grano) para que parezca real; Cristian no lo quiere.
   - REGLA (18 oct): el aro SIEMPRE puesto en un perro que se vea (aunque sea silueta). NUNCA un aro flotando solo: a Cristian le pareció horrible (toma del parque en `perro_perdido_noche.mp4`, 2,5 cr perdidos).
 - No agregar funciones nuevas a la app si no las pide.
 - Respuestas cortas: cuidar su uso semanal de Claude.
