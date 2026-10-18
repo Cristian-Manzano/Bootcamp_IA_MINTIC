@@ -166,6 +166,7 @@ Cada vez que Cristian pida un prompt:
    - `dogpark_cualesmio.mp4` (10,7 s): dog park con perros de colores → aros en el patio → aussie rosa corre y salta a la cámara. "Which one is mine? 😂" → "Tag your dog park friend 🐾".
    - Descartada: toma del carro pasando (la IA puso dos aros rosa+azul y un punto verde en el perro).
    - Dónde pasean de noche en EE. UU.: acera del barrio (lo más común), patio de atrás antes de dormir, apartamentos/parqueaderos, dog parks al atardecer, campo sin faroles, camping. Fechas clave: Halloween 31 oct, cambio de hora 1 nov.
+14. Perro perdido en la noche cerrada (18 oct, 2 tomas × 2,5 cr = 5 cr) → `publicar_18oct/perro_perdido_noche.mp4` (13 s, sonido real): mujer del súper → linterna buscando en el patio ("When your dog runs off at night… 😰") → parque negro, solo un aro verde flotando entre los árboles → calle casi sin luz, el aro viene de lejos y llega el perro negro ("Send this to the friend whose dog escapes at night 😭") → GLOW. Es el estilo que Cristian pidió.
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
