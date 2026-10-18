@@ -168,6 +168,12 @@ Cada vez que Cristian pida un prompt:
    - Descartada: toma del carro pasando (la IA puso dos aros rosa+azul y un punto verde en el perro).
    - Dónde pasean de noche en EE. UU.: acera del barrio (lo más común), patio de atrás antes de dormir, apartamentos/parqueaderos, dog parks al atardecer, campo sin faroles, camping. Fechas clave: Halloween 31 oct, cambio de hora 1 nov.
 14. Perro perdido en la noche cerrada (18 oct, 2 tomas × 2,5 cr = 5 cr) → `publicar_18oct/perro_perdido_noche.mp4` (13 s, sonido real): mujer del súper → linterna buscando en el patio ("When your dog runs off at night… 😰") → parque negro, solo un aro verde flotando entre los árboles → calle casi sin luz, el aro viene de lejos y llega el perro negro ("Send this to the friend whose dog escapes at night 😭") → GLOW. Es el estilo que Cristian pidió.
+15. VIDEO DE REFERENCIA de Cristian (18 oct, "así es que lo quiero"), 14 s, grabado real con celular (360×640, sin IA):
+   - 0–4 s PROBLEMA: POV caminando de noche por una calle oscura, se ve la sombra del dueño; el perro negro es un puntito casi invisible a lo lejos. Texto en caja blanca: "También tenés un negrito que no se ve en el piso negro? 😅🐶" (pregunta que identifica al público + humor).
+   - 4–6,7 s: dentro de la casa, con luz normal, el perro negro en la escalera; la dueña le acerca el collar (tubo blanco/rosa, apagado) → se ve cómo es el producto.
+   - 6,7–7,9 s: de noche, primer plano poniéndole el collar rosa encendido (correa rosa normal). Texto "La solución 😅🐶".
+   - 7,9–14 s RESULTADO: plano abierto de la calle oscura, el perro se ve como un puntito rosa que se mueve lejos.
+   - Claves: real y sin producción; problema → solución; el público ya vio al perro y el collar ANTES del puntito (por eso el puntito sí se entiende; nuestro aro flotando no tenía ese contexto); texto nativo de TikTok en caja blanca; sonido real/canción.
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
