@@ -179,6 +179,10 @@ Cada vez que Cristian pida un prompt:
    - Método que funcionó: Cristian hizo 2 fotos fijas gratis (perro negro en la escalera con el collar APAGADO en la mano, sin cable; el mismo perro en la calle oscura con collar rosa) y yo las animé como start_image → las 2 salieron bien (collar apagado se mantuvo apagado; el mismo perro).
    - Falló la toma solo-texto "perro negro cruza corriendo sin collar": salió café, muy visible y con una línea rara. Se usaron solo sus 2 primeros segundos (sombra del dueño en la calle vacía).
    - Para "sin collar" la próxima: también hacer primero una foto fija y animarla.
+17. RECREACIÓN FIEL de la referencia (18 oct, 4 tomas × 2,5 cr = 10 cr) → `publicar_18oct/recreacion_referencia_perronegro.mp4` (13,3 s, sonido real, caja blanca). Las 4 salieron bien a la primera.
+   - Método ganador: (1) desarmar la referencia cuadro por cuadro con los MOVIMIENTOS y la emoción, no solo cómo se ve; (2) Cristian hace una foto fija gratis de cada escena con el mismo perro de referencia; (3) yo comparo cada foto con la referencia; (4) animo cada foto como start_image describiendo el movimiento exacto.
+   - Escenas: perro negro cruza delante del dueño de noche y se pierde corriendo al fondo de la calle (sin collar) · en la escalera el perro emocionado se mueve y olfatea el collar apagado · de noche la mano con manga roja le acomoda el collar rosa encendido · parque oscuro, el puntito rosa lejos corriendo y la cámara lo sigue.
+   - Lección: NO simplificar la referencia para que sea fácil para la IA. Copiar la idea y los movimientos exactos; si algo no se puede, decirlo antes de gastar.
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
