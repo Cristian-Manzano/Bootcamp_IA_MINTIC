@@ -175,6 +175,10 @@ Cada vez que Cristian pida un prompt:
    - 6,7–7,9 s: de noche, primer plano poniéndole el collar rosa encendido (correa rosa normal). Texto "La solución 😅🐶".
    - 7,9–14 s RESULTADO: plano abierto de la calle oscura, el perro se ve como un puntito rosa que se mueve lejos.
    - Claves: real y sin producción; problema → solución; el público ya vio al perro y el collar ANTES del puntito (por eso el puntito sí se entiende; nuestro aro flotando no tenía ese contexto); texto nativo de TikTok en caja blanca; sonido real/canción.
+16. Versión de la referencia problema→solución (18 oct, 3 tomas × 2,5 cr = 7,5 cr) → `publicar_18oct/problema_solucion_perronegro.mp4` (11 s, sonido real, texto en caja blanca estilo TikTok: render_box.js).
+   - Método que funcionó: Cristian hizo 2 fotos fijas gratis (perro negro en la escalera con el collar APAGADO en la mano, sin cable; el mismo perro en la calle oscura con collar rosa) y yo las animé como start_image → las 2 salieron bien (collar apagado se mantuvo apagado; el mismo perro).
+   - Falló la toma solo-texto "perro negro cruza corriendo sin collar": salió café, muy visible y con una línea rara. Se usaron solo sus 2 primeros segundos (sombra del dueño en la calle vacía).
+   - Para "sin collar" la próxima: también hacer primero una foto fija y animarla.
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
