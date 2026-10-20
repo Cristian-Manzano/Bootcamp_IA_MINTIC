@@ -206,6 +206,11 @@ Cada vez que Cristian pida un prompt:
   - `super_montaje_A/B/C_1080.mp4`.
 - Regla: nunca dos versiones del mismo video el mismo día.
 
+## Obsidian (vault `kindear-notas`, 20 oct)
+- Repo privado github.com/Cristian-Manzano/kindear-notas = vault de Obsidian en el PC de Cristian (Documentos\kindear-notas), plugin Obsidian Git: guarda/sube y baja cada 2 min.
+- Al empezar cada sesión: add_repo kindear-notas, git pull, leer "Para Claude.md" (pedidos) y "Resultados.md" (estadísticas). Responder en "Para Claude.md".
+- Cada video nuevo o cambio de plan: actualizar "00 Inicio", "Plan de publicación", "Videos" y hacer push. Notas cortas, en español.
+
 ## Tienda (kindear.vercel.app/glow)
 - Se edita desde el chat "página de producto" de Cristian. El código no está en GitHub, así que yo no la puedo editar directo: le paso las órdenes listas para pegar.
 - Estado al 11 oct 2026:
