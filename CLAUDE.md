@@ -201,6 +201,13 @@ Cada vez que Cristian pida un prompt:
    - `16_halloween_disfraz_cambia_solo.mp4` (15,1 s): patio negro, perro con disfraz de gato casi invisible → mismo perro con el collar rosa encendido corriendo feliz → cierre con la fiesta del video 14 (gratis). Textos: "POV: your dog's costume upgrades itself at night 🎃✨" → "Send this to someone losing their dog in the dark this Halloween 😭" + GLOW.
    - `17_halloween_vecino_competitivo.mp4` (10,1 s): vecino en su porche sencillo, reacción de sorpresa/envidia al ver al lado → plano amplio de la fiesta de los vecinos con los perros y collares brillando a lo lejos. Textos: "When the neighbor's dogs are cooler than your whole decoration 💀" → "Tag the neighbor who needs to see this 🎃" + GLOW.
    - Las 3 ideas de Halloween (15, 16, 17) nunca el mismo día que el 14 ni entre ellas.
+## Influencer IA: la nutria (25 oct)
+- Personaje de Cristian: nutria antropomorfa con copete, chaqueta azul marino, polo de rayas número 40, short azul, medias blancas con rayas, tenis azules (foto media ffce3547-e1bf-47e6-b383-898f59984aaf).
+- Seedance Mini con video de referencia de otro creador → BLOQUEADO por "ip_detected" (devolvió los 7,5 cr). Genjutsu (hf_mult_motion_control) SÍ lo aceptó.
+- Costo Genjutsu: ~3 cr por segundo a 480p (10 s = 30 cr, 12 s = 36 cr, 19 s = 57 cr; 720p ≈ 7 cr/s). Recortar siempre el video a lo mejor.
+- `influencer_nutria/01_nutria_selfie_genjutsu.mp4` (12 s, 36 cr): selfie nocturno en canchas de tenis, caras exageradas, se cae al pasto. Salió muy bien, la nutria mantiene la cara y la ropa.
+- Para próximos: preferir TRENDS (bailes/memes que hace mucha gente) en vez de sketches de un solo creador; poner el sonido del trend desde la app.
+
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
