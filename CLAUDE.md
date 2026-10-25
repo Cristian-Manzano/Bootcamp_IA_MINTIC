@@ -214,6 +214,12 @@ Cada vez que Cristian pida un prompt:
 - Concepto fijo de Jambo: ATLETA #40 (jugadas imposibles en lugares reales, grabado con celular, gente real reaccionando). Ropa base siempre igual; solo un accesorio según el lugar.
 - Para próximos: preferir TRENDS (bailes/memes que hace mucha gente) en vez de sketches de un solo creador; poner el sonido del trend desde la app.
 
+## Influencer IA 2: Rocco (25 oct)
+- Hombre musculoso, copete plateado, bigote, curita en la nariz, traje verde con solapas naranjas, corbata naranja, cadena de oro con león, relojes de oro. Nombre propuesto: Rocco Valenti (Cristian quiere un nombre que suene a persona real; pendiente de que confirme el usuario).
+- Foto de referencia SIN el logo de Louis Vuitton de los zapatos (gpt_image_2_5, 0,25 cr): media 26618872-32b6-4023-a7ef-bacd12a7d538 → `influencer_rocco/rocco_referencia_sin_logo.png`. Usar SIEMPRE esta, nunca la original con LV.
+- `influencer_rocco/01_rocco_baile_robot.mp4` (25 oct, Genjutsu 480p, video recortado a 10 s = 30 cr exactos, → 1080): copia de un viral de un hombre bailando con un robot humanoide. Salió bien: cara, pelo, bigote, traje, corbata, reloj y zapatos iguales; el robot se mantuvo. Diferencias: cuerpo más delgado que la foto (copia al bailarín) y los robots del fondo cambiaron a negros.
+- Precio exacto de Genjutsu: get_cost con las medias ya subidas lo da (3 cr/s a 480p).
+
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
