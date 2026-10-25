@@ -205,7 +205,7 @@ Cada vez que Cristian pida un prompt:
 - Personaje de Cristian: nutria antropomorfa con copete, chaqueta azul marino, polo de rayas número 40, short azul, medias blancas con rayas, tenis azules (foto media ffce3547-e1bf-47e6-b383-898f59984aaf).
 - Seedance Mini con video de referencia de otro creador → BLOQUEADO por "ip_detected" (devolvió los 7,5 cr). Genjutsu (hf_mult_motion_control) SÍ lo aceptó.
 - Costo Genjutsu: ~3 cr por segundo a 480p (10 s = 30 cr, 12 s = 36 cr, 19 s = 57 cr; 720p ≈ 7 cr/s). Recortar siempre el video a lo mejor.
-- `influencer_nutria/01_nutria_selfie_genjutsu.mp4` (12 s, 36 cr): selfie nocturno en canchas de tenis, caras exageradas, se cae al pasto. Salió muy bien, la nutria mantiene la cara y la ropa.
+- `influencer_nutria/01_nutria_selfie_genjutsu.mp4` (12 s, 36 cr): selfie nocturno en canchas de tenis, caras exageradas, se cae al pasto. La cara y el copete salieron bien, pero la ROPA cambió: rayas del polo casi perdidas, "40" deformado y una franja de corbata copiada del hombre del video original. Cristian lo dejó así. LECCIÓN: Genjutsu mezcla la ropa del video de referencia; revisar la ropa cuadro por cuadro contra la foto ANTES de entregar, pasar la foto de cerca + la de cuerpo entero, y elegir videos donde la persona use ropa parecida (sin corbata ni saco).
 - Para próximos: preferir TRENDS (bailes/memes que hace mucha gente) en vez de sketches de un solo creador; poner el sonido del trend desde la app.
 
 ## Plan de publicación (desde el 12 oct 2026)
