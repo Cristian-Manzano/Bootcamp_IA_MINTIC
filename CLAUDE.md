@@ -57,6 +57,7 @@ Cada vez que Cristian pida un prompt:
 - Al final, 3–5 hashtags (#dogmom #ledcollar #dogsoftiktok #nightwalk…).
 - Referencias: Rain Coded ("Comment GREEN if you would buy this") y Novax ("Comenta moto para info", 39,7 k likes, ángulo de regalo).
 - El texto en pantalla puede dejar la frase a medias para dar curiosidad: "The perfect gift for a dog mom doesn't exis.. 😮". El ángulo de regalo sirve para Halloween y Navidad.
+- PRUEBA (25 oct, idea de Cristian): descripción de UNA sola frase o pregunta que invite a comentar, SIN "Comment GLOW" y SIN hashtags. Ej. página /glow: "Would you have seen him in time? 😰".
 - Siempre responder los comentarios con el link por mensaje (ManyChat en Instagram y Facebook; a mano en TikTok).
 
 ## Marca
