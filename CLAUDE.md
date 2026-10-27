@@ -226,6 +226,7 @@ Cada vez que Cristian pida un prompt:
 
 ## Influencers IA 3: dúo punk pato (pelo negro/azul) + nutria (pelo rojo) (27 oct)
 - `influencer_duo/01_cafe_regado.mp4` (7,5 cr, Mini 480p 15 s → 1080): recreación de un viral animado (abuelos Pixar haciendo café). Método: guion segundo a segundo del original + foto inicial gratis en ChatGPT copiando el ÁNGULO del original (subir captura del original como referencia de composición) → animar con Mini. Salió casi igual: café regado 2 veces, agua en la taza, leche regada en el mesón, la nutria toma café. Sin marcas (frasco sin etiqueta).
+- RESULTADO FINAL (27 oct): a Cristian NO le sirvió ninguno. 01: la taza nunca se movió (yo leí mal el chiste: se quitan la taza el uno al otro). 02 (9,6 cr, 5 fotos clave en ChatGPT + seedance1_5 con foto inicio/fin, 4 momentos de 4 s): la taza sí se movió, pero en el momento 1 apareció una mano humana con manga de traje que no es de ningún personaje; Cristian dijo que todo el video es absurdo. Total perdido 17,1 cr. LECCIÓN: NO recrear videos con acciones precisas entre 2 personajes (pasarse/quitarse objetos a tiempo). Analizar el chiste del original con zoom en los objetos ANTES de escribir el guion.
 - Cristian NO tiene plata para Genjutsu: preferir siempre este método barato (foto ChatGPT gratis + Mini 480p).
 - SadTalker (gratis, instalado en /opt/st del contenedor): probado, a Cristian le pareció horrible. No usar.
 
