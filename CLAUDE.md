@@ -224,6 +224,11 @@ Cada vez que Cristian pida un prompt:
 - REGLA: antes de gastar, escribir toma por toma qué se ve y DESDE DÓNDE graba la cámara, y esperar el "sí".
 - Precio exacto de Genjutsu: get_cost con las medias ya subidas lo da (3 cr/s a 480p).
 
+## Influencers IA 3: dúo punk pato (pelo negro/azul) + nutria (pelo rojo) (27 oct)
+- `influencer_duo/01_cafe_regado.mp4` (7,5 cr, Mini 480p 15 s → 1080): recreación de un viral animado (abuelos Pixar haciendo café). Método: guion segundo a segundo del original + foto inicial gratis en ChatGPT copiando el ÁNGULO del original (subir captura del original como referencia de composición) → animar con Mini. Salió casi igual: café regado 2 veces, agua en la taza, leche regada en el mesón, la nutria toma café. Sin marcas (frasco sin etiqueta).
+- Cristian NO tiene plata para Genjutsu: preferir siempre este método barato (foto ChatGPT gratis + Mini 480p).
+- SadTalker (gratis, instalado en /opt/st del contenedor): probado, a Cristian le pareció horrible. No usar.
+
 ## Plan de publicación (desde el 12 oct 2026)
 - 2 videos al día: 12:00 p. m. y 7:00 p. m., hora de Colombia (1 p. m. y 8 p. m. hora del este de EE. UU.).
 - Primero se publican los videos con los ganchos A/B/C, uno por día al mediodía.
