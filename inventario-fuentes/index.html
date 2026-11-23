@@ -310,7 +310,7 @@ Responde solo con JSON: {"codigoEscrito": "SAM-000001" o null, "marca": "Samsung
 const S = {
   db: null, user: null, assets: null, sample: null, downloads: null,
   aiImages: false, aiOff: false,
-  isOwner: false, canWrite: null, myId: null,
+  isOwner: false, canWrite: null, myId: null, aiWhy: "",
   fuentes: new Map(), precios: new Map(), cajas: new Map(), refs: new Map(),
   ready: { fuentes: false }, dbMissing: false, slow: false, dbError: "",
   view: "buscar", q: "", fEstado: "disponible", fPulg: null, fMarca: null,
@@ -377,8 +377,11 @@ function dbErrMsg(e) {
 function aiErrMsg(e) {
   switch (e?.code) {
     case "cancelled": return "";
-    case "not_granted": case "sampling_disabled": case "not_declared": case "capability_disabled": case "capability_removed": case "images_unavailable":
-      S.aiOff = true; return "La lectura con IA no está disponible en esta cuenta. Llena los datos a mano.";
+    case "not_granted": S.aiOff = true; S.aiWhy = "declined"; return "No se dio permiso para usar la IA.";
+    case "sampling_disabled": S.aiOff = true; S.aiWhy = "disabled"; return "La IA está desactivada para tu cuenta.";
+    case "images_unavailable": S.aiOff = true; S.aiWhy = "no-images"; return "Aquí la IA no puede recibir fotos.";
+    case "not_declared": case "capability_disabled": case "capability_removed":
+      S.aiOff = true; S.aiWhy = "no-sample"; return "La IA no se pudo activar en este dispositivo.";
     case "rate_limited": return e.reason === "usage_limit" ? "Llegaste al límite de uso de Claude de tu cuenta. Llena los datos a mano o intenta más tarde." : "Hiciste muchas lecturas seguidas. Espera un momento e intenta de nuevo.";
     case "image_rejected": return "Esta foto no se pudo leer. Toma otra foto.";
     case "invalid_json": case "empty_completion": return "La IA no entregó datos claros. Agrega una foto de cerca de la etiqueta e intenta de nuevo.";
@@ -676,7 +679,7 @@ function renderRegistrar() {
     ${R.fotos.length > 1 && canAI && !R.aiBusy ? `<button class="btn btn-sm" type="button" data-act="ai-run">Leer de nuevo con todas las fotos</button>` : ""}
     ${R.fotos.length === 1 && canAI && !R.aiBusy && !R.ai && !R.aiErr ? `<button class="btn btn-sm" type="button" data-act="ai-run">Leer con IA</button>` : ""}
     ${R.fotos.length && R.aiErr && canAI ? `<button class="btn btn-sm" type="button" data-act="ai-run">Intentar de nuevo</button>` : ""}
-    ${!canAI && S.booted ? `<p class="sub">La lectura con IA no está disponible aquí. Llena los datos a mano.</p>` : ""}
+    ${aiStatusHTML()}
     ${!fotosOk && R.fotos.length ? `<p class="sub">Con tu acceso las fotos no se guardan en la ficha; los datos sí.</p>` : ""}
     ${aiBlock}
     ${dup}
@@ -688,6 +691,17 @@ function renderRegistrar() {
     <button class="btn btn-accent btn-block" type="submit" ${R.saving || R.aiBusy ? "disabled" : ""}>${R.saving ? "Guardando…" : "Guardar fuente"}</button>
   </form>`;
   if (!R.form.codigo && R.form.marca) { $("#r-codigo").value = nextCode(prefijoDe(R.form.marca)); R.form.codeAuto = true; }
+}
+function aiStatusHTML() {
+  if (!S.booted) return "";
+  const m = {
+    "no-sample": "La IA no se pudo activar en este dispositivo, así que los datos no se llenan solos. Abre la app en el navegador (Chrome o Safari) entrando a claude.ai con tu cuenta, o actualiza la app de Claude.",
+    "no-images": "Aquí la IA no puede recibir fotos, así que los datos no se llenan solos. Abre la app en el navegador (Chrome o Safari) entrando a claude.ai con tu cuenta, o actualiza la app de Claude.",
+    "declined": "No se dio permiso para que la app use la IA. Recarga la página y, cuando Claude pregunte, toca Permitir.",
+    "disabled": "Tu cuenta tiene la IA desactivada para apps. Llena los datos a mano.",
+  }[S.aiWhy];
+  if (m) return `<div class="notice bad">${esc(m)}<div class="sub" style="margin-top:4px">Código del aviso: ${esc(S.aiWhy)}</div></div>`;
+  return S.sample && S.aiImages && !S.aiOff ? `<p class="sub"><span class="tag tag-ok">IA lista</span> Al tomar la foto, la IA llena los datos sola.</p>` : "";
 }
 async function addPhotos(files) {
   captureR();
@@ -1119,6 +1133,7 @@ async function boot() {
   const [db, user, assets, sample, downloads] = await Promise.all(["db", "user", "assets", "sample", "downloads"].map(use));
   Object.assign(S, { db, user, assets, sample, downloads });
   if (sample) { try { const lim = await sample.limits(); S.aiImages = !!lim?.images; } catch { S.aiImages = false; } }
+  S.aiWhy = !sample ? "no-sample" : (!S.aiImages ? "no-images" : "");
   S.booted = true;
   if (user) {
     try { S.isOwner = await user.isOwner(); } catch {}
