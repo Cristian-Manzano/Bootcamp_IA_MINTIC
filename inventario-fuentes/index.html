@@ -495,6 +495,7 @@ function groupHTML(g) {
     </div>
     <div class="g-meta">
       ${pulg.map((p) => `<span class="tag tag-pcb">${esc(p)}"</span>`).join("")}
+      ${!h.numeroParte ? `<span class="tag tag-warn">Faltan datos: abre la ficha para completarla</span>` : ""}
       ${pulg.length || tvs.length ? (conf ? `<span class="tag tag-ok">Compatibilidad verificada</span>` : `<span class="tag tag-warn">Sugerida por IA</span>`) : ""}
       ${tvs.length ? `<span class="tvs">${esc(tvs.slice(0, 4).join(", "))}${tvs.length > 4 ? ` y ${tvs.length - 4} más` : ""}</span>` : ""}
     </div>
@@ -683,6 +684,7 @@ function renderRegistrar() {
   <form id="r-form" class="card form" novalidate>
     ${formHTML(R.form, "r-", "nuevo")}
     ${R.saveErr ? `<div class="notice bad">${esc(R.saveErr)}</div>` : ""}
+    ${R.askSinParte ? `<div class="notice">Falta el número de parte. Sin él, esta fuente no se agrupa con las iguales ni aparece al buscar la referencia.${R.fotos.length && S.sample && S.aiImages && !S.aiOff ? " Prueba Leer con IA o escríbelo a mano." : " Escríbelo a mano."}<div class="row" style="margin-top:8px"><button class="btn btn-sm" type="button" data-act="save-anyway">Guardar así de todas formas</button></div></div>` : ""}
     <button class="btn btn-accent btn-block" type="submit" ${R.saving || R.aiBusy ? "disabled" : ""}>${R.saving ? "Guardando…" : "Guardar fuente"}</button>
   </form>`;
   if (!R.form.codigo && R.form.marca) { $("#r-codigo").value = nextCode(prefijoDe(R.form.marca)); R.form.codeAuto = true; }
@@ -757,6 +759,8 @@ async function guardarNueva() {
   R.saveErr = "";
   if (!S.db) { R.saveErr = "Conectando con el inventario… intenta en unos segundos."; renderRegistrar(); return; }
   if (!marcaCanon(f.marca)) { R.saveErr = "Elige la marca."; renderRegistrar(); $("#r-marca")?.focus(); return; }
+  if (!String(f.numeroParte || "").trim() && !String(f.modeloPlaca || "").trim() && !R.okSinParte) { R.askSinParte = true; renderRegistrar(); $("#r-numeroParte")?.focus(); return; }
+  R.askSinParte = false;
   const typed = String(f.codigo || "").trim();
   let code = typed ? cleanCode(typed) : nextCode(prefijoDe(f.marca));
   if (!code) { R.saveErr = "El código debe tener letras, guion y números, por ejemplo SAM-000001."; renderRegistrar(); return; }
@@ -831,7 +835,7 @@ async function crearCaja() {
 }
 
 /* ---------- Ficha ---------- */
-function openFicha(code) { S.openCode = code; S.sheetMode = "ver"; S.confirmDelete = false; $("#sheet").hidden = false; renderSheet(); $("#sheet-panel").scrollTop = 0; }
+function openFicha(code) { S.openCode = code; S.sheetMode = "ver"; S.confirmDelete = false; S.editPrefill = null; S.fichaAIErr = ""; S.fichaAI = false; $("#sheet").hidden = false; renderSheet(); $("#sheet-panel").scrollTop = 0; }
 function closeFicha() { S.openCode = null; $("#sheet").hidden = true; $("#sheet-panel").innerHTML = ""; }
 function renderSheet(force) {
   if (!S.openCode) return;
@@ -841,8 +845,11 @@ function renderSheet(force) {
   if (!f) { panel.innerHTML = `<div class="sheet-head"><div class="grow"><span class="code big">${esc(S.openCode)}</span></div><button class="x" type="button" data-act="close" aria-label="Cerrar">×</button></div><p class="hint">Esta fuente ya no existe en el inventario.</p>`; return; }
   const writable = S.canWrite !== false;
   if (S.sheetMode === "editar") {
-    const base = { ...f, otrosCodigos: arr(f.otrosCodigos).join(", "), tvCompatibles: arr(f.tvCompatibles).join(", "), precio: precioDe(f.codigo) ?? "" };
+    const pre = S.editPrefill || {};
+    const base = { ...f, otrosCodigos: arr(f.otrosCodigos).join(", "), tvCompatibles: arr(f.tvCompatibles).join(", "), precio: precioDe(f.codigo) ?? "", ...pre };
+    const codeNote = pre.codigoLeido && pre.codigoLeido !== f.codigo ? `<div class="notice">En la foto está escrito <b class="mono">${esc(pre.codigoLeido)}</b>, pero esta fuente está registrada como <b class="mono">${esc(f.codigo)}</b>. Corrige el código escrito en la placa o avísale al dueño.</div>` : "";
     panel.innerHTML = `<div class="sheet-head"><div class="grow"><span class="code big">${esc(f.codigo)}</span><span class="sub">Editar datos</span></div><button class="x" type="button" data-act="close" aria-label="Cerrar">×</button></div>
+      ${S.editPrefill ? `<div class="notice info">La IA llenó los datos desde la foto. Revísalos y guarda.</div>` : ""}${codeNote}
       <form id="e-form" class="form" novalidate>${formHTML(base, "e-", "editar")}
       <div id="e-err"></div>
       <div class="row"><button class="btn btn-accent" type="submit">Guardar cambios</button><button class="btn" type="button" data-act="edit-cancel">Cancelar</button></div></form>`;
@@ -872,6 +879,10 @@ function renderSheet(force) {
     ${row("Condición", esc(CONDICIONES[f.condicion] || ""))}
     ${row("Notas", esc(f.notas))}
   </dl>
+  ${!f.numeroParte && writable ? `<div class="notice">A esta fuente le falta el número de parte, por eso no se agrupa con las iguales.
+    <div class="row" style="margin-top:8px">${arr(f.fotos).length && S.sample && S.aiImages && !S.aiOff ? `<button class="btn btn-sm btn-accent" type="button" data-act="ficha-ai" ${S.fichaAI ? "disabled" : ""}>${S.fichaAI ? "Leyendo la foto…" : "Leer datos de la foto con IA"}</button>` : ""}
+    <button class="btn btn-sm" type="button" data-act="edit">Llenar a mano</button></div></div>` : ""}
+  ${S.fichaAIErr ? `<div class="notice bad">${esc(S.fichaAIErr)}</div>` : ""}
   ${ref && (arr(ref.tvCompatibles).join() !== arr(f.tvCompatibles).join() || arr(ref.pulgadas).join() !== arr(f.pulgadas).join()) ? `<div class="notice info">Tu equipo verificó esta referencia para ${esc(arr(ref.pulgadas).map((x) => x + '"').join(", "))} ${esc(arr(ref.tvCompatibles).join(", "))}.</div>` : ""}
   ${writable ? `<div class="field"><span class="lbl">Cambiar estado</span><div class="state-btns">${Object.entries(ESTADOS).map(([k, l]) => `<button class="btn" type="button" data-act="estado" data-v="${k}" aria-pressed="${f.estado === k}">${l}</button>`).join("")}</div></div>
   <div class="field"><label for="s-caja">Mover a caja</label><div class="row"><select id="s-caja" style="flex:1;min-width:140px">${cajaOpts}</select><button class="btn" type="button" data-act="move">Mover</button></div></div>` : ""}
@@ -879,6 +890,44 @@ function renderSheet(force) {
   ${writable ? `<div class="row-between"><button class="btn" type="button" data-act="edit">Editar datos</button>
     ${S.isOwner ? (S.confirmDelete ? `<div class="row"><span class="sub">¿Borrar ${esc(f.codigo)} para siempre?</span><button class="btn btn-danger-solid btn-sm" type="button" data-act="delete-yes">Sí, borrar</button><button class="btn btn-sm" type="button" data-act="delete-no">No</button></div>` : `<button class="btn btn-danger" type="button" data-act="delete">Borrar</button>`) : ""}</div>` : ""}`;
   fillNames(panel);
+}
+function aiCampos(a) {
+  const s = (x) => (typeof x === "string" ? x.trim() : "");
+  const o = {};
+  if (s(a.marca)) o.marca = marcaCanon(a.marca);
+  if (s(a.numeroParte)) o.numeroParte = s(a.numeroParte).toUpperCase();
+  if (s(a.modeloPlaca)) o.modeloPlaca = s(a.modeloPlaca).toUpperCase();
+  if (arr(a.otrosCodigos).length) o.otrosCodigos = arr(a.otrosCodigos).map(String).join(", ");
+  if (s(a.voltajes)) o.voltajes = s(a.voltajes);
+  const pul = arr(a.pulgadas).map((x) => parseInt(x, 10)).filter((x) => x > 10 && x < 120);
+  if (pul.length) o.pulgadas = pul;
+  if (arr(a.tvCompatibles).length) o.tvCompatibles = arr(a.tvCompatibles).map(String).join(", ");
+  const ref = o.numeroParte && S.refs.get(norm(o.numeroParte));
+  if (ref) {
+    if (arr(ref.pulgadas).length) o.pulgadas = arr(ref.pulgadas).map(Number);
+    if (arr(ref.tvCompatibles).length) o.tvCompatibles = arr(ref.tvCompatibles).join(", ");
+    o.compatConfirmada = true;
+  }
+  const code = cleanCode(a.codigoEscrito);
+  if (code) o.codigoLeido = code;
+  return o;
+}
+async function leerFotoFicha(code) {
+  const f = S.fuentes.get(code);
+  if (!f || !S.sample) return;
+  S.fichaAI = true; S.fichaAIErr = ""; renderSheet(true);
+  try {
+    const blobs = [];
+    for (const id of arr(f.fotos).slice(0, 4)) { try { const r = await fetch(blobSrc(id)); if (r.ok) blobs.push(await r.blob()); } catch {} }
+    if (!blobs.length) throw { code: "no_photo" };
+    const a = await S.sample.json(PROMPT_LEER, { images: blobs });
+    S.editPrefill = aiCampos(a && typeof a === "object" ? a : {});
+    S.sheetMode = "editar";
+  } catch (e) {
+    S.fichaAIErr = e?.code === "no_photo" ? "No se pudo abrir la foto guardada. Llena los datos a mano." : aiErrMsg(e);
+  }
+  S.fichaAI = false;
+  if (S.openCode === code) { renderSheet(true); $("#sheet-panel").scrollTop = 0; }
 }
 async function fillNames(root) {
   if (!S.user) return;
@@ -923,7 +972,7 @@ async function guardarEdicion() {
     await updateFuente(f.codigo, d, "Datos editados");
     if (S.isOwner && raw.precio !== undefined) await savePrecio(f.codigo, raw.precio);
     await saveRef(d);
-    S.sheetMode = "ver"; renderSheet(true); toast("Cambios guardados");
+    S.sheetMode = "ver"; S.editPrefill = null; renderSheet(true); toast("Cambios guardados");
   } catch (e) { errEl.innerHTML = `<div class="notice bad">${esc(dbErrMsg(e))}</div>`; }
 }
 async function borrarFuente(code) {
@@ -1003,6 +1052,8 @@ document.addEventListener("click", async (ev) => {
     case "rm-photo": captureR(); URL.revokeObjectURL(R.fotos[+v]?.url); R.fotos.splice(+v, 1); renderRegistrar(); break;
     case "reset": R.ctl?.abort(); R.fotos.forEach((p) => URL.revokeObjectURL(p.url)); R = freshR({ marca: R.form.marca, caja: R.form.caja }); renderRegistrar(); break;
     case "ai-run": runAI(); break;
+    case "save-anyway": R.okSinParte = true; guardarNueva(); break;
+    case "ficha-ai": leerFotoFicha(S.openCode); break;
     case "ai-stop": R.ctl?.abort(); break;
     case "next-manual": R = freshR({ marca: R.done?.marca, caja: R.done?.caja }); renderRegistrar(); break;
     case "ps-stop": S.ps?.ctl?.abort(); break;
@@ -1026,7 +1077,7 @@ document.addEventListener("click", async (ev) => {
       break;
     }
     case "edit": S.sheetMode = "editar"; renderSheet(true); $("#sheet-panel").scrollTop = 0; break;
-    case "edit-cancel": S.sheetMode = "ver"; renderSheet(true); break;
+    case "edit-cancel": S.sheetMode = "ver"; S.editPrefill = null; renderSheet(true); break;
     case "delete": S.confirmDelete = true; renderSheet(true); break;
     case "delete-no": S.confirmDelete = false; renderSheet(true); break;
     case "delete-yes": borrarFuente(S.openCode); break;
