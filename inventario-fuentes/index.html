@@ -1,0 +1,1098 @@
+<title>Inventario de Fuentes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: herramienta de mostrador, una columna para celular; buscar arriba, pestañas fijas abajo, ficha como hoja deslizable. */
+:root {
+  --bg: #eef2ee;
+  --surface: #ffffff;
+  --surface-2: #e4eae4;
+  --ink: #142019;
+  --muted: #56645b;
+  --line: #d0d9d1;
+  --accent: #17654a;
+  --accent-ink: #ffffff;
+  --accent-soft: #d8ebe1;
+  --pcb: #a8721c;
+  --pcb-soft: #f5e7c9;
+  --ok: #17703f;
+  --ok-soft: #d9efe1;
+  --warn: #9a5f00;
+  --warn-soft: #f7e9cb;
+  --bad: #b0281f;
+  --bad-soft: #f7dcda;
+  --off: #67716b;
+  --off-soft: #e3e7e4;
+  --shadow: 0 1px 2px rgba(20, 32, 25, .06), 0 6px 20px rgba(20, 32, 25, .06);
+  --font-head: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1411; --surface: #172019; --surface-2: #202b24; --ink: #e5ece7; --muted: #9aa89f; --line: #2c3931;
+    --accent: #4cc08f; --accent-ink: #04140c; --accent-soft: #163428; --pcb: #dcaa52; --pcb-soft: #382b14;
+    --ok: #62d293; --ok-soft: #153423; --warn: #e5ae45; --warn-soft: #382b12; --bad: #ff8b82; --bad-soft: #3b1a17;
+    --off: #9ba49e; --off-soft: #252d28; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1411; --surface: #172019; --surface-2: #202b24; --ink: #e5ece7; --muted: #9aa89f; --line: #2c3931;
+  --accent: #4cc08f; --accent-ink: #04140c; --accent-soft: #163428; --pcb: #dcaa52; --pcb-soft: #382b14;
+  --ok: #62d293; --ok-soft: #153423; --warn: #e5ae45; --warn-soft: #382b12; --bad: #ff8b82; --bad-soft: #3b1a17;
+  --off: #9ba49e; --off-soft: #252d28; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.45; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--surface); }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-head); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.mono, .code { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+
+/* Top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--pcb); }
+.top h1 { font-size: 20px; font-weight: 800; line-height: 1.1; }
+.top-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.stats { font-size: 13px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.stats b { color: var(--ink); font-weight: 600; }
+
+main { padding-block: 16px 110px; display: grid; gap: 14px; }
+.view { display: grid; gap: 14px; min-width: 0; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn:hover { border-color: var(--muted); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn-accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-accent:hover { border-color: var(--accent); filter: brightness(1.06); }
+.btn-ghost { background: transparent; border-color: transparent; }
+.btn-danger { color: var(--bad); border-color: var(--bad); background: transparent; }
+.btn-danger-solid { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+.btn-sm { min-height: 36px; padding: 0 12px; font-size: 14px; border-radius: 8px; }
+.btn-block { width: 100%; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Search */
+.searchbar { display: flex; gap: 8px; }
+.searchbar input { flex: 1; min-width: 0; }
+input[type="search"], input[type="text"], input[type="number"], select, textarea {
+  width: 100%; min-height: 46px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); font-size: 16px;
+}
+textarea { min-height: 76px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: .8; }
+.filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+.filters::-webkit-scrollbar { display: none; }
+.chip { flex: none; min-height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 500; cursor: pointer; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.sep { flex: none; width: 1px; background: var(--line); margin: 4px 2px; }
+
+/* Cards & groups */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.card h2 { font-size: 18px; font-weight: 700; }
+.hint { color: var(--muted); font-size: 14px; margin: 0; }
+.group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+.g-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; }
+.thumb { width: 56px; height: 56px; border-radius: 8px; background: var(--pcb-soft); object-fit: cover; display: block; border: 1px solid var(--line); }
+.thumb-empty { display: grid; place-items: center; color: var(--pcb); }
+.thumb-empty svg { width: 26px; height: 26px; }
+.g-part { font-size: 16px; font-weight: 600; letter-spacing: .02em; overflow-wrap: anywhere; }
+.g-sub { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.g-count { text-align: right; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.g-count b { display: block; font-family: var(--font-head); font-size: 24px; color: var(--ok); }
+.g-count.zero b { color: var(--off); }
+.g-count span { font-size: 12px; color: var(--muted); }
+.g-meta { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 12px; align-items: center; }
+.tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; background: var(--surface-2); color: var(--ink); font-variant-numeric: tabular-nums; }
+.tag-pcb { background: var(--pcb-soft); color: var(--pcb); }
+.tag-ok { background: var(--ok-soft); color: var(--ok); }
+.tag-warn { background: var(--warn-soft); color: var(--warn); }
+.tvs { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.units { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.units li + li { border-top: 1px solid var(--line); }
+.unit { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 14px; background: none; border: 0; text-align: left; cursor: pointer; }
+.unit:hover { background: var(--surface-2); }
+.unit .box { font-size: 13px; color: var(--muted); font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.unit .price { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.unit .right { display: grid; justify-items: end; gap: 2px; }
+.code { display: inline-block; font-weight: 600; font-size: 13px; letter-spacing: .04em; padding: 2px 7px; border: 1.5px solid currentColor; border-radius: 4px; color: var(--ink); white-space: nowrap; }
+.code.big { font-size: 18px; padding: 3px 10px; }
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st-disponible { background: var(--ok-soft); color: var(--ok); }
+.st-reservada { background: var(--warn-soft); color: var(--warn); }
+.st-vendida { background: var(--off-soft); color: var(--off); }
+.st-danada { background: var(--bad-soft); color: var(--bad); }
+
+.empty { text-align: center; padding: 32px 16px; display: grid; gap: 10px; justify-items: center; color: var(--muted); }
+.empty h3 { color: var(--ink); font-size: 18px; }
+.empty svg { width: 44px; height: 44px; color: var(--pcb); }
+.notice { border-radius: 10px; padding: 10px 12px; font-size: 14px; background: var(--warn-soft); color: var(--warn); }
+.notice.info { background: var(--accent-soft); color: var(--accent); }
+.notice.bad { background: var(--bad-soft); color: var(--bad); }
+.notice.ok { background: var(--ok-soft); color: var(--ok); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row-between { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+
+/* AI reading */
+.reading { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+.spin { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid var(--accent-soft); border-top-color: var(--accent); animation: spin .8s linear infinite; flex: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation-duration: 2.4s; } }
+.photos { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+.ph { position: relative; flex: none; }
+.ph img { width: 92px; height: 120px; object-fit: cover; border-radius: 8px; display: block; border: 1px solid var(--line); background: var(--pcb-soft); }
+.ph button { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: #fff; cursor: pointer; font-size: 15px; line-height: 1; }
+.photo-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* Form */
+.form { display: grid; gap: 14px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field > label, .field > .lbl { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+.chips-t { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: inline-flex; align-items: center; min-height: 38px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 500; }
+.seg input:checked + span { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; cursor: pointer; }
+.check input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--accent); flex: none; }
+.code-field { display: flex; gap: 8px; }
+.code-field input { font-family: var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+.sub { font-size: 12px; color: var(--muted); }
+.done-box { text-align: center; display: grid; gap: 12px; justify-items: center; padding: 20px 8px; }
+.done-box .code { font-size: 22px; padding: 4px 12px; }
+
+/* Cajas */
+.boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.boxc { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; cursor: pointer; display: grid; gap: 4px; min-width: 0; }
+.boxc[aria-expanded="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.boxc .bname { font-family: var(--font-mono); font-weight: 600; font-size: 16px; letter-spacing: .04em; }
+.boxc .bn { font-family: var(--font-head); font-size: 26px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.boxc .bs { font-size: 12px; color: var(--muted); }
+.box-detail { display: grid; gap: 0; }
+
+/* Bottom tabs */
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tabs-in { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 760px; margin: 0 auto; padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); }
+.tab { display: grid; justify-items: center; gap: 2px; padding: 8px 4px 10px; background: none; border: 0; cursor: pointer; color: var(--muted); font-size: 12px; font-weight: 600; }
+.tab svg { width: 24px; height: 24px; }
+.tab[aria-current="page"] { color: var(--accent); }
+.tab-reg .tab-ic { display: grid; place-items: center; width: 44px; height: 32px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); }
+.tab-reg .tab-ic svg { width: 22px; height: 22px; }
+
+/* Sheet */
+.sheet { position: fixed; inset: 0; z-index: 40; background: rgba(8, 14, 11, .55); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-panel { background: var(--bg); width: 100%; max-width: 680px; max-height: calc(100% - env(safe-area-inset-top, 0px) - 24px); overflow-y: auto; border-radius: 16px 16px 0 0; padding: 0 max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 14px; align-content: start; }
+@media (min-width: 720px) { .sheet { align-items: center; } .sheet-panel { border-radius: 16px; max-height: 90%; } }
+.sheet-head { position: sticky; top: 0; z-index: 2; background: var(--bg); display: flex; align-items: center; gap: 10px; padding: 14px 0 10px; border-bottom: 1px solid var(--line); }
+.sheet-head .grow { flex: 1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-width: 0; }
+.x { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 20px; line-height: 1; flex: none; }
+.gallery { display: flex; gap: 8px; overflow-x: auto; }
+.gallery img { height: 220px; width: auto; max-width: 85%; border-radius: 10px; border: 1px solid var(--line); background: var(--pcb-soft); flex: none; object-fit: cover; }
+.specs { display: grid; grid-template-columns: max-content 1fr; gap: 8px 14px; margin: 0; font-size: 14px; }
+.specs dt { color: var(--muted); font-weight: 500; }
+.specs dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.specs dd.mono { font-size: 13.5px; }
+.price-big { font-family: var(--font-head); font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.hist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13px; }
+.hist li { display: grid; grid-template-columns: 92px 1fr; gap: 8px; }
+.hist time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.state-btns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+@media (max-width: 460px) { .state-btns { grid-template-columns: repeat(2, 1fr); } }
+.state-btns .btn { padding: 0 8px; font-size: 14px; }
+.state-btns .btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow); max-width: calc(100% - 32px); }
+.skel { height: 96px; border-radius: var(--r); background: var(--surface-2); }
+</style>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div>
+      <div class="eyebrow">Repuestos de TV</div>
+      <h1>Inventario de Fuentes</h1>
+    </div>
+    <div class="top-right">
+      <div class="stats" id="stats">Cargando…</div>
+      <button class="btn btn-sm" id="export-btn" type="button" hidden>Exportar CSV</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div id="notice" class="notice" hidden></div>
+
+  <section id="v-buscar" class="view" aria-label="Buscar fuentes">
+    <div class="searchbar">
+      <input id="q" type="search" placeholder="Código, número de parte o modelo de TV" autocomplete="off" aria-label="Buscar">
+      <label class="btn btn-accent" id="photo-search-label" title="Buscar con una foto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <span>Foto</span>
+        <input id="photo-search" class="vh" type="file" accept="image/*" capture="environment">
+      </label>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div id="ai-search" hidden></div>
+    <div id="results" class="view"></div>
+  </section>
+
+  <section id="v-registrar" class="view" aria-label="Registrar fuente" hidden></section>
+  <section id="v-cajas" class="view" aria-label="Cajas" hidden></section>
+</main>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="tabs-in">
+    <button class="tab" type="button" data-view="buscar" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+      Buscar
+    </button>
+    <button class="tab tab-reg" type="button" data-view="registrar">
+      <span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      Registrar
+    </button>
+    <button class="tab" type="button" data-view="cajas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-4 9 4v9l-9 4-9-4z"/><path d="M3 8l9 4 9-4M12 12v9"/></svg>
+      Cajas
+    </button>
+  </div>
+</nav>
+
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-panel" id="sheet-panel" role="dialog" aria-modal="true" aria-label="Ficha de la fuente"></div>
+</div>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+(() => {
+"use strict";
+
+/* ---------- Catálogos ---------- */
+const MARCAS = [["Samsung","SAM"],["LG","LG"],["Sony","SON"],["TCL","TCL"],["Hisense","HIS"],["Challenger","CHA"],["Kalley","KAL"],["Panasonic","PAN"],["Philips","PHI"],["AOC","AOC"],["Xiaomi","XIA"],["Hyundai","HYU"],["Caixun","CAI"],["JVC","JVC"],["Sharp","SHA"],["Otra","OTR"]];
+const ESTADOS = { disponible: "Disponible", reservada: "Reservada", vendida: "Vendida", danada: "Dañada" };
+const CONDICIONES = { sin_probar: "Sin probar", probada: "Probada", con_falla: "Con falla" };
+const PULGADAS = [24, 32, 39, 40, 42, 43, 48, 49, 50, 55, 58, 60, 65, 70, 75, 85];
+const ICON_BOARD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8" cy="10" r="2"/><rect x="12" y="8" width="5" height="4"/><path d="M7 15h10M3 9h-1M3 15h-1M22 9h-1M22 15h-1"/></svg>';
+const ICON_CAM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+const ICON_IMG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>';
+
+const PROMPT_LEER = `Eres un técnico experto en reparación de televisores. Las imágenes muestran una tarjeta fuente de poder (power supply board) de un TV, a veces con una foto de cerca de su etiqueta. Lee con cuidado todo el texto impreso en la placa, en sus etiquetas y lo escrito a mano.
+
+Busca:
+- Un código de inventario escrito a mano con marcador: 2 a 4 letras, guion y números (ejemplo SAM-000001). Puede estar repetido, girado o al revés.
+- La marca (Samsung, LG, Sony, TCL, Hisense, Challenger, Kalley, Panasonic, Philips, AOC, Xiaomi, Hyundai, Caixun, JVC, Sharp u otra).
+- El número de parte principal. Samsung: BN44-xxxxxA; también aparece dentro del serial "SEC S/N: CN07BN4400754A..." como BN4400754A, que se escribe BN44-00754A. LG: EAX/EAY. Sony: APS-xxx o 1-xxx-xxx-xx. TCL, Hisense y otras: códigos como 40-xxxxx, RSAG7.820.xxxx, 81-PBExxx.
+- El modelo de la placa (ejemplo L40G0B_ESM, PD40AVF_CSM, L55S6_THS) y otros códigos impresos (ejemplo PSLF870G06A).
+- Los voltajes de salida impresos (ejemplo "13V 2.18A", "LED 148V 350mA").
+- Las pulgadas, si la placa las indica (L40 = 40", L55 = 55", una tabla con 50"/55"/58", o un texto como 40" 5K).
+
+Después, con tu conocimiento, sugiere los tamaños de pantalla y los modelos de TV con los que esta fuente es compatible. Si no estás seguro, deja la lista vacía y pon confianza baja. No inventes modelos.
+
+Responde solo con un objeto JSON con esta forma:
+{"codigoEscrito": "SAM-000001" o null, "marca": "Samsung", "numeroParte": "BN44-00754A", "modeloPlaca": "L40G0B_ESM", "otrosCodigos": ["PSLF870G06A"], "voltajes": "13V 2.18A · LED 148V 350mA", "pulgadas": [40], "tvCompatibles": ["UN40H5003"], "confianzaLectura": "alta", "confianzaCompatibilidad": "media", "notas": "frase corta en español sobre lo que no se pudo leer o las dudas"}
+Las confianzas son "alta", "media" o "baja". Usa null o [] cuando no sepas un dato.`;
+
+const PROMPT_BUSCAR = `La imagen muestra una tarjeta fuente de poder de un TV. Lee el código de inventario escrito a mano con marcador (2 a 4 letras, guion y números, ejemplo SAM-000001; puede estar girado), la marca, el número de parte principal (Samsung: BN44-xxxxxA, que también aparece dentro del serial "SEC S/N: CN07BN4400754A..." como BN4400754A = BN44-00754A; LG: EAX/EAY; Sony: APS-xxx) y el modelo de la placa (ejemplo L40G0B_ESM).
+Responde solo con JSON: {"codigoEscrito": "SAM-000001" o null, "marca": "Samsung" o null, "numeroParte": "BN44-00754A" o null, "modeloPlaca": "L40G0B_ESM" o null}`;
+
+/* ---------- Estado ---------- */
+const S = {
+  db: null, user: null, assets: null, sample: null, downloads: null,
+  aiImages: false, aiOff: false,
+  isOwner: false, canWrite: null, myId: null,
+  fuentes: new Map(), precios: new Map(), cajas: new Map(), refs: new Map(),
+  ready: { fuentes: false }, dbMissing: false, slow: false, dbError: "",
+  view: "buscar", q: "", fEstado: "disponible", fPulg: null, fMarca: null,
+  ps: null, openCode: null, sheetMode: "ver", confirmDelete: false, openBox: null,
+};
+let R = freshR();
+function freshR(keep = {}) {
+  return {
+    fotos: [], aiBusy: false, aiErr: "", ai: null, ctl: null, ref: null, dup: null,
+    saving: false, saveErr: "", done: null,
+    form: { codigo: "", codeAuto: true, marca: keep.marca || "", numeroParte: "", modeloPlaca: "", otrosCodigos: "", voltajes: "",
+      pulgadas: [], tvCompatibles: "", compatConfirmada: false, caja: keep.caja || "", estado: "disponible", condicion: "sin_probar", precio: "", notas: "" },
+  };
+}
+
+/* ---------- Utilidades ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = (s) => String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+const arr = (v) => Array.isArray(v) ? v : [];
+const fmtCOP = (n) => (typeof n === "number" && isFinite(n)) ? "$ " + Math.round(n).toLocaleString("es-CO") : "";
+const fmtDate = (t) => { try { return new Date(t).toLocaleDateString("es-CO", { day: "numeric", month: "short", year: "numeric" }); } catch { return ""; } };
+const byCode = (a, b) => String(a.codigo).localeCompare(String(b.codigo), "es", { numeric: true });
+function marcaCanon(m) {
+  m = String(m || "").trim().toLowerCase();
+  if (!m) return "";
+  const f = MARCAS.find(([n]) => n.toLowerCase() === m) || MARCAS.find(([n]) => n !== "Otra" && m.includes(n.toLowerCase()));
+  return f ? f[0] : "Otra";
+}
+const prefijoDe = (marca) => (MARCAS.find(([n]) => n === marcaCanon(marca)) || ["", "OTR"])[1];
+function cleanCode(c) {
+  c = String(c || "").toUpperCase().replace(/\s+/g, "").replace(/[_.]/g, "-");
+  const m = /^([A-Z]{2,4})-?0*(\d{1,6})$/.exec(c);
+  return m ? m[1] + "-" + m[2].padStart(6, "0") : null;
+}
+function nextCode(prefix) {
+  let max = 0;
+  for (const id of S.fuentes.keys()) { const m = /^([A-Z]+)-(\d+)$/.exec(id); if (m && m[1] === prefix) max = Math.max(max, +m[2]); }
+  let n = max + 1, c;
+  do { c = prefix + "-" + String(n).padStart(6, "0"); n++; } while (S.fuentes.has(c));
+  return c;
+}
+function nextCaja() {
+  let max = 0;
+  for (const id of allCajas()) { const m = /^CAJA-(\d+)$/.exec(id); if (m) max = Math.max(max, +m[1]); }
+  return "CAJA-" + String(max + 1).padStart(2, "0");
+}
+function allCajas() {
+  const s = new Set(S.cajas.keys());
+  for (const f of S.fuentes.values()) if (f.caja) s.add(f.caja);
+  return [...s].sort((a, b) => a.localeCompare(b, "es", { numeric: true }));
+}
+const precioDe = (code) => { const p = S.precios.get(code); return p && typeof p.precio === "number" ? p.precio : null; };
+let toastT;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2600); }
+function histEntry(a) { return { t: Date.now(), u: S.myId || null, a }; }
+function dbErrMsg(e) {
+  if (e?.code === "invalid_argument") { S.canWrite = false; renderNotice(); return "No tienes permiso para guardar cambios. Pide al dueño del inventario que te comparta la app como Editor."; }
+  if (e?.code === "quota_exceeded") return "La base de datos está llena. Borra fuentes viejas que ya no necesites.";
+  if (e?.code === "resource_exhausted") return "Demasiados cambios seguidos. Espera unos segundos e intenta de nuevo.";
+  return "No se pudo guardar. Revisa la conexión e intenta de nuevo.";
+}
+function aiErrMsg(e) {
+  switch (e?.code) {
+    case "cancelled": return "";
+    case "not_granted": case "sampling_disabled": case "not_declared": case "capability_disabled": case "capability_removed": case "images_unavailable":
+      S.aiOff = true; return "La lectura con IA no está disponible en esta cuenta. Llena los datos a mano.";
+    case "rate_limited": return e.reason === "usage_limit" ? "Llegaste al límite de uso de Claude de tu cuenta. Llena los datos a mano o intenta más tarde." : "Hiciste muchas lecturas seguidas. Espera un momento e intenta de nuevo.";
+    case "image_rejected": return "Esta foto no se pudo leer. Toma otra foto.";
+    case "invalid_json": case "empty_completion": return "La IA no entregó datos claros. Agrega una foto de cerca de la etiqueta e intenta de nuevo.";
+    case "refused": return "La IA no pudo analizar esta foto. Prueba con otra.";
+    case "session_expired": return "Tu sesión de Claude expiró. Vuelve a iniciar sesión.";
+    default: return "No se pudo conectar con la IA. Intenta de nuevo.";
+  }
+}
+async function prepImage(file, max = 1800) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+    const s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement("canvas");
+    c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    const b = await new Promise((r) => c.toBlob(r, "image/jpeg", 0.86));
+    return b || file;
+  } catch { return file; } finally { URL.revokeObjectURL(url); }
+}
+const blobSrc = (id) => "/_blob/" + encodeURIComponent(id);
+
+/* ---------- Render: encabezado y avisos ---------- */
+function renderStats() {
+  const all = [...S.fuentes.values()];
+  const disp = all.filter((f) => f.estado === "disponible").length;
+  $("#stats").innerHTML = S.ready.fuentes || all.length
+    ? `<b>${disp}</b> disponibles · ${all.length} fuentes`
+    : (S.dbMissing ? "" : "Cargando…");
+  $("#export-btn").hidden = !(S.isOwner && S.downloads && all.length);
+}
+function renderNotice() {
+  const n = $("#notice");
+  let msg = "", cls = "notice";
+  if (S.dbMissing) { msg = "Abre esta app desde Claude con tu cuenta para ver y guardar el inventario."; cls += " bad"; }
+  else if (S.dbError) { msg = S.dbError; cls += " bad"; }
+  else if (S.canWrite === false) { msg = "Tienes acceso de solo lectura. Para registrar o vender fuentes, pide al dueño que te comparta la app como Editor."; }
+  else if (S.slow && !S.ready.fuentes) { msg = "El inventario está tardando en cargar. Revisa la conexión; los datos aparecerán solos cuando conecte."; }
+  n.className = cls; n.textContent = msg; n.hidden = !msg;
+}
+
+/* ---------- Render: Buscar ---------- */
+function renderFilters() {
+  const pulgSet = new Set();
+  for (const f of S.fuentes.values()) arr(f.pulgadas).forEach((p) => pulgSet.add(+p));
+  const pulgs = [...pulgSet].filter(Boolean).sort((a, b) => a - b);
+  const marcas = [...new Set([...S.fuentes.values()].map((f) => f.marca).filter(Boolean))].sort();
+  const est = [["disponible", "Disponibles"], ["todas", "Todas"], ["reservada", "Reservadas"], ["vendida", "Vendidas"], ["danada", "Dañadas"]];
+  let h = est.map(([k, l]) => `<button type="button" class="chip" data-act="f-estado" data-v="${k}" aria-pressed="${S.fEstado === k}">${l}</button>`).join("");
+  if (pulgs.length) h += `<span class="sep"></span>` + pulgs.map((p) => `<button type="button" class="chip" data-act="f-pulg" data-v="${p}" aria-pressed="${S.fPulg === p}">${p}"</button>`).join("");
+  if (marcas.length > 1) h += `<span class="sep"></span>` + marcas.map((m) => `<button type="button" class="chip" data-act="f-marca" data-v="${esc(m)}" aria-pressed="${S.fMarca === m}">${esc(m)}</button>`).join("");
+  $("#filters").innerHTML = h;
+}
+function hayDe(f) {
+  return norm([f.codigo, f.marca, f.numeroParte, f.modeloPlaca, arr(f.otrosCodigos).join(" "), arr(f.tvCompatibles).join(" "), f.caja, f.voltajes, f.notas].join(" "));
+}
+function filtered() {
+  const toks = S.q.split(/\s+/).map(norm).filter(Boolean);
+  return [...S.fuentes.values()].filter((f) =>
+    (S.fEstado === "todas" || f.estado === S.fEstado) &&
+    (!S.fPulg || arr(f.pulgadas).map(Number).includes(S.fPulg)) &&
+    (!S.fMarca || f.marca === S.fMarca) &&
+    (!toks.length || (() => { const h = hayDe(f); return toks.every((t) => h.includes(t)); })())
+  );
+}
+function groupKey(f) { return f.parteNorm || ("COD-" + f.codigo); }
+function renderResults() {
+  const box = $("#results");
+  if (!S.ready.fuentes && !S.fuentes.size) {
+    box.innerHTML = S.dbMissing ? "" : `<div class="skel"></div><div class="skel"></div>`;
+    return;
+  }
+  if (!S.fuentes.size) {
+    box.innerHTML = `<div class="card empty">${ICON_BOARD}<h3>Aún no hay fuentes registradas</h3>
+      <p class="hint">Toma una foto de la fuente con su código escrito. La IA lee la etiqueta y llena los datos.</p>
+      <button class="btn btn-accent" type="button" data-act="go" data-v="registrar">Registrar la primera fuente</button></div>`;
+    return;
+  }
+  const list = filtered();
+  if (!list.length) {
+    const what = S.q ? `“${esc(S.q)}”` : "estos filtros";
+    box.innerHTML = `<div class="card empty"><h3>No hay fuentes para ${what}</h3>
+      <p class="hint">${S.fEstado === "disponible" ? "Puede que estén vendidas o reservadas. " : ""}Prueba con otra parte del número o quita los filtros.</p>
+      <div class="row" style="justify-content:center">${S.fEstado !== "todas" ? `<button class="btn btn-sm" type="button" data-act="f-estado" data-v="todas">Ver todas</button>` : ""}
+      ${S.canWrite !== false ? `<button class="btn btn-sm btn-accent" type="button" data-act="go" data-v="registrar">Registrar una nueva</button>` : ""}</div></div>`;
+    return;
+  }
+  const allBy = new Map();
+  for (const f of S.fuentes.values()) { const k = groupKey(f); if (!allBy.has(k)) allBy.set(k, []); allBy.get(k).push(f); }
+  const groups = new Map();
+  for (const f of list) { const k = groupKey(f); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(f); }
+  const gs = [...groups.entries()].map(([k, units]) => {
+    units.sort(byCode);
+    const all = allBy.get(k) || units;
+    return { k, units, all, disp: all.filter((f) => f.estado === "disponible").length };
+  }).sort((a, b) => (b.disp > 0) - (a.disp > 0) || byCode(a.units[0], b.units[0]));
+  box.innerHTML = `<p class="hint">${list.length} ${list.length === 1 ? "fuente" : "fuentes"} en ${gs.length} ${gs.length === 1 ? "referencia" : "referencias"}</p>` + gs.map(groupHTML).join("");
+}
+function groupHTML(g) {
+  const h = g.units[0];
+  const foto = g.all.map((f) => arr(f.fotos)[0]).find(Boolean);
+  const ref = h.parteNorm && S.refs.get(h.parteNorm);
+  const conf = ref || g.all.some((f) => f.compatConfirmada);
+  const pulg = ref ? arr(ref.pulgadas) : arr(h.pulgadas);
+  const tvs = ref ? arr(ref.tvCompatibles) : arr(h.tvCompatibles);
+  return `<article class="group">
+    <div class="g-head">
+      ${foto ? `<img class="thumb" src="${blobSrc(foto)}" alt="" loading="lazy">` : `<div class="thumb thumb-empty">${ICON_BOARD}</div>`}
+      <div style="min-width:0">
+        <div class="g-part mono">${esc(h.numeroParte || h.modeloPlaca || "Sin número de parte")}</div>
+        <div class="g-sub">${esc([h.marca, h.numeroParte ? h.modeloPlaca : ""].filter(Boolean).join(" · "))}</div>
+      </div>
+      <div class="g-count ${g.disp ? "" : "zero"}"><b>${g.disp}</b><span>${g.disp === 1 ? "disponible" : "disponibles"}${g.all.length > 1 ? ` de ${g.all.length}` : ""}</span></div>
+    </div>
+    <div class="g-meta">
+      ${pulg.map((p) => `<span class="tag tag-pcb">${esc(p)}"</span>`).join("")}
+      ${pulg.length || tvs.length ? (conf ? `<span class="tag tag-ok">Compatibilidad verificada</span>` : `<span class="tag tag-warn">Sugerida por IA</span>`) : ""}
+      ${tvs.length ? `<span class="tvs">${esc(tvs.slice(0, 4).join(", "))}${tvs.length > 4 ? ` y ${tvs.length - 4} más` : ""}</span>` : ""}
+    </div>
+    <ul class="units">${g.units.map(unitHTML).join("")}</ul>
+  </article>`;
+}
+function unitHTML(f) {
+  const p = precioDe(f.codigo);
+  return `<li><button class="unit" type="button" data-act="open" data-v="${esc(f.codigo)}">
+    <span class="code">${esc(f.codigo)}</span>
+    <span class="box">${esc(f.caja || "Sin caja")}</span>
+    <span class="right"><span class="pill st-${esc(f.estado)}">${esc(ESTADOS[f.estado] || f.estado)}</span>${p != null ? `<span class="price">${fmtCOP(p)}</span>` : ""}</span>
+  </button></li>`;
+}
+
+/* ---------- Búsqueda por foto ---------- */
+function renderPS() {
+  const el = $("#ai-search");
+  const ps = S.ps;
+  if (!ps) { el.hidden = true; el.innerHTML = ""; return; }
+  el.hidden = false;
+  if (ps.busy) { el.innerHTML = `<div class="card"><div class="reading"><span class="spin"></span><span>Leyendo la foto… puede tardar unos segundos.</span></div><div><button class="btn btn-sm" type="button" data-act="ps-stop">Cancelar</button></div></div>`; return; }
+  if (ps.err) { el.innerHTML = `<div class="notice bad">${esc(ps.err)}</div>`; return; }
+  const r = ps.res || {};
+  const leido = [r.codigoEscrito, r.numeroParte, r.modeloPlaca].filter(Boolean);
+  const n = filtered().length;
+  el.innerHTML = `<div class="card">
+    <div class="row-between"><div><div class="sub">La IA leyó</div><div class="mono">${leido.length ? esc(leido.join(" · ")) : "Ningún código legible"}</div></div>
+    <button class="btn btn-sm btn-ghost" type="button" data-act="ps-close">Cerrar</button></div>
+    ${n ? `<p class="hint">Coincidencias abajo.</p>` : `<div class="notice">No tienes esta fuente registrada${S.fEstado === "disponible" ? " como disponible" : ""}.</div>
+      ${S.canWrite !== false ? `<div><button class="btn btn-accent btn-sm" type="button" data-act="ps-register">Registrarla con esta foto</button></div>` : ""}`}
+  </div>`;
+}
+async function buscarPorFoto(file) {
+  if (!S.sample || S.aiOff) { toast("La lectura con IA no está disponible en esta cuenta."); return; }
+  const blob = await prepImage(file);
+  const ctl = new AbortController();
+  S.ps = { busy: true, ctl, blob };
+  renderPS();
+  try {
+    const r = await S.sample.json(PROMPT_BUSCAR, { images: [blob], signal: ctl.signal });
+    const res = r && typeof r === "object" ? r : {};
+    S.ps = { res, blob };
+    const code = cleanCode(res.codigoEscrito);
+    if (code && S.fuentes.has(code)) { S.ps = null; renderPS(); openFicha(code); return; }
+    const q = res.numeroParte || res.modeloPlaca || "";
+    S.q = q; $("#q").value = q; S.fEstado = "todas"; S.fPulg = null; S.fMarca = null;
+    renderFilters(); renderResults(); renderPS();
+  } catch (e) {
+    const m = aiErrMsg(e);
+    S.ps = m ? { err: m } : null;
+    renderPS();
+  }
+}
+
+/* ---------- Formulario (registrar y editar) ---------- */
+function formHTML(f, p, mode) {
+  const cajas = allCajas();
+  const marcaOpts = `<option value="">Elige la marca</option>` + MARCAS.map(([n]) => `<option ${f.marca === n ? "selected" : ""}>${n}</option>`).join("");
+  const cajaOpts = `<option value="">Sin caja</option>` + cajas.map((c) => `<option ${f.caja === c ? "selected" : ""}>${esc(c)}</option>`).join("") + `<option value="__nueva">+ Nueva caja (${esc(nextCaja())})</option>`;
+  const pulgs = [...new Set([...PULGADAS, ...arr(f.pulgadas).map(Number)])].sort((a, b) => a - b);
+  const seg = (name, obj, val) => `<div class="seg" role="radiogroup">${Object.entries(obj).map(([k, l]) => `<label><input type="radio" name="${p}${name}" value="${k}" ${val === k ? "checked" : ""}><span>${l}</span></label>`).join("")}</div>`;
+  return `
+  ${mode === "nuevo" ? `<div class="field"><label for="${p}codigo">Código de inventario</label>
+    <div class="code-field"><input id="${p}codigo" type="text" value="${esc(f.codigo)}" placeholder="SAM-000001" autocomplete="off" spellcheck="false"></div>
+    <div class="sub">Escríbelo igual en la fuente con marcador. Si lo dejas vacío se usa el siguiente libre.</div></div>` : ""}
+  <div class="grid2">
+    <div class="field"><label for="${p}marca">Marca</label><select id="${p}marca">${marcaOpts}</select></div>
+    <div class="field"><label for="${p}numeroParte">Número de parte</label><input id="${p}numeroParte" type="text" value="${esc(f.numeroParte)}" placeholder="BN44-00754A" autocomplete="off" spellcheck="false" class="mono"></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="${p}modeloPlaca">Modelo de la placa</label><input id="${p}modeloPlaca" type="text" value="${esc(f.modeloPlaca)}" placeholder="L40G0B_ESM" autocomplete="off" spellcheck="false" class="mono"></div>
+    <div class="field"><label for="${p}otrosCodigos">Otros códigos</label><input id="${p}otrosCodigos" type="text" value="${esc(f.otrosCodigos)}" placeholder="PSLF870G06A" autocomplete="off" spellcheck="false" class="mono"></div>
+  </div>
+  <div class="field"><label for="${p}voltajes">Voltajes de salida</label><input id="${p}voltajes" type="text" value="${esc(f.voltajes)}" placeholder="13V 2.18A · LED 148V 350mA" autocomplete="off"></div>
+  <div class="field"><span class="lbl">Sirve para TV de</span>
+    <div class="chips-t" id="${p}pulgadas">${pulgs.map((n) => `<button type="button" class="chip" data-act="pulg" data-v="${n}" aria-pressed="${arr(f.pulgadas).map(Number).includes(n)}">${n}"</button>`).join("")}</div></div>
+  <div class="field"><label for="${p}tvCompatibles">Modelos de TV compatibles</label><textarea id="${p}tvCompatibles" placeholder="UN40H5003, UN40H5203">${esc(f.tvCompatibles)}</textarea><div class="sub">Sepáralos con comas.</div></div>
+  <label class="check"><input id="${p}compatConfirmada" type="checkbox" ${f.compatConfirmada ? "checked" : ""}><span><b>Compatibilidad verificada.</b> La probé en el TV o la confirmé con el modelo. Las próximas fuentes con este número de parte la usarán.</span></label>
+  <div class="grid2">
+    <div class="field"><label for="${p}caja">Caja</label><select id="${p}caja" data-act="caja-select">${cajaOpts}</select></div>
+    ${S.isOwner ? `<div class="field"><label for="${p}precio">Precio de venta (COP)</label><input id="${p}precio" type="number" inputmode="numeric" min="0" step="1000" value="${esc(f.precio)}" placeholder="120000"></div>` : ""}
+  </div>
+  <div class="field"><span class="lbl">Estado</span>${seg("estado", ESTADOS, f.estado)}</div>
+  <div class="field"><span class="lbl">Condición</span>${seg("condicion", CONDICIONES, f.condicion)}</div>
+  <div class="field"><label for="${p}notas">Notas</label><textarea id="${p}notas" placeholder="De qué TV salió, fallas, observaciones">${esc(f.notas)}</textarea></div>`;
+}
+function readForm(p, base) {
+  const v = (id) => { const el = document.getElementById(p + id); return el ? el.value : undefined; };
+  const radio = (n) => { const el = document.querySelector(`input[name="${p}${n}"]:checked`); return el ? el.value : undefined; };
+  const f = { ...base };
+  const set = (k, val) => { if (val !== undefined) f[k] = val; };
+  set("codigo", v("codigo")); set("marca", v("marca")); set("numeroParte", v("numeroParte")); set("modeloPlaca", v("modeloPlaca"));
+  set("otrosCodigos", v("otrosCodigos")); set("voltajes", v("voltajes")); set("tvCompatibles", v("tvCompatibles")); set("notas", v("notas"));
+  set("caja", v("caja")); set("precio", v("precio")); set("estado", radio("estado")); set("condicion", radio("condicion"));
+  const cc = document.getElementById(p + "compatConfirmada"); if (cc) f.compatConfirmada = cc.checked;
+  const pc = document.getElementById(p + "pulgadas"); if (pc) f.pulgadas = $$('[aria-pressed="true"]', pc).map((b) => +b.dataset.v);
+  if (f.caja === "__nueva") f.caja = "";
+  return f;
+}
+const splitList = (s) => String(s || "").split(/[,;\n]+/).map((x) => x.trim()).filter(Boolean);
+function docFromForm(f) {
+  const numeroParte = String(f.numeroParte || "").trim().toUpperCase();
+  return {
+    marca: marcaCanon(f.marca) || "Otra",
+    numeroParte, parteNorm: norm(numeroParte),
+    modeloPlaca: String(f.modeloPlaca || "").trim().toUpperCase(),
+    otrosCodigos: splitList(f.otrosCodigos).map((x) => x.toUpperCase()),
+    voltajes: String(f.voltajes || "").trim(),
+    pulgadas: arr(f.pulgadas).map(Number).filter(Boolean).sort((a, b) => a - b),
+    tvCompatibles: splitList(f.tvCompatibles).map((x) => x.toUpperCase()),
+    compatConfirmada: !!f.compatConfirmada,
+    caja: f.caja || "", estado: ESTADOS[f.estado] ? f.estado : "disponible",
+    condicion: CONDICIONES[f.condicion] ? f.condicion : "sin_probar",
+    notas: String(f.notas || "").trim(),
+  };
+}
+async function saveRef(d) {
+  if (!d.compatConfirmada || !d.parteNorm || (!d.pulgadas.length && !d.tvCompatibles.length)) return;
+  try {
+    await S.db.doc("referencias/" + d.parteNorm).set({ numeroParte: d.numeroParte, marca: d.marca, modeloPlaca: d.modeloPlaca, voltajes: d.voltajes,
+      pulgadas: d.pulgadas, tvCompatibles: d.tvCompatibles, por: S.myId || null, en: Date.now() });
+  } catch {}
+}
+async function savePrecio(code, raw) {
+  if (!S.isOwner) return;
+  const n = raw === "" || raw == null ? null : Math.round(Number(raw));
+  const prev = precioDe(code);
+  if (n === prev) return;
+  if (n == null || !isFinite(n)) { await S.db.doc("precios/" + code).delete(); return; }
+  await S.db.doc("precios/" + code).set({ precio: n, en: Date.now() });
+}
+
+/* ---------- Render: Registrar ---------- */
+function captureR() { if ($("#r-form")) R.form = readForm("r-", R.form); }
+function renderRegistrar() {
+  const v = $("#v-registrar");
+  captureR();
+  if (S.dbMissing) { v.innerHTML = `<div class="card empty"><h3>Abre la app desde Claude</h3><p class="hint">Para registrar fuentes necesitas abrirla con tu cuenta.</p></div>`; return; }
+  if (S.canWrite === false) { v.innerHTML = `<div class="card empty"><h3>Solo lectura</h3><p class="hint">Pide al dueño del inventario que te comparta la app como Editor para registrar fuentes.</p></div>`; return; }
+  if (R.done) {
+    const d = R.done;
+    v.innerHTML = `<div class="card done-box">
+      <span class="tag tag-ok">Guardada</span>
+      <span class="code">${esc(d.codigo)}</span>
+      <p class="hint">${esc(d.marca)} ${esc(d.numeroParte)} · ${d.caja ? "en " + esc(d.caja) : "sin caja asignada"}${d.warn ? "<br>" + esc(d.warn) : ""}</p>
+      <label class="btn btn-accent btn-block">${ICON_CAM}<span>Registrar otra con foto</span><input class="vh" type="file" accept="image/*" capture="environment" data-role="next-photo"></label>
+      <div class="row" style="justify-content:center">
+        <button class="btn btn-sm" type="button" data-act="next-manual">Registrar otra sin foto</button>
+        <button class="btn btn-sm" type="button" data-act="open" data-v="${esc(d.codigo)}">Ver ficha</button>
+      </div>
+      <p class="sub">Se mantienen la marca y la caja para que registres seguido.</p>
+    </div>`;
+    return;
+  }
+  const canAI = S.sample && S.aiImages && !S.aiOff;
+  const ai = R.ai;
+  let aiBlock = "";
+  if (R.aiBusy) aiBlock = `<div class="row-between"><div class="reading"><span class="spin"></span><span>Leyendo la placa con IA… puede tardar hasta un minuto.</span></div><button class="btn btn-sm" type="button" data-act="ai-stop">Cancelar</button></div>`;
+  else if (R.aiErr) aiBlock = `<div class="notice bad">${esc(R.aiErr)}</div>`;
+  else if (ai) {
+    const lvl = (x) => ({ alta: "tag-ok", media: "tag-warn", baja: "tag-warn" }[x] || "");
+    aiBlock = `<div class="notice info">Revisa los datos antes de guardar.${ai.notas ? " " + esc(ai.notas) : ""}</div>
+      <div class="row">${ai.confianzaLectura ? `<span class="tag ${lvl(ai.confianzaLectura)}">Lectura: ${esc(ai.confianzaLectura)}</span>` : ""}
+      ${R.ref ? `<span class="tag tag-ok">Compatibilidad verificada por tu equipo</span>` : (ai.confianzaCompatibilidad ? `<span class="tag ${lvl(ai.confianzaCompatibilidad)}">Compatibilidad sugerida: ${esc(ai.confianzaCompatibilidad)}</span>` : "")}</div>`;
+  }
+  const dup = R.dup && S.fuentes.has(R.dup) ? `<div class="notice">El código <b class="mono">${esc(R.dup)}</b> ya está registrado. <button class="btn btn-sm" type="button" data-act="open" data-v="${esc(R.dup)}">Ver su ficha</button></div>` : "";
+  const fotosOk = !!S.assets;
+  v.innerHTML = `
+  <div class="card">
+    <div class="row-between"><h2>Registrar fuente</h2>${R.fotos.length || R.ai ? `<button class="btn btn-sm btn-ghost" type="button" data-act="reset">Empezar de nuevo</button>` : ""}</div>
+    ${R.fotos.length ? `<div class="photos">${R.fotos.map((f, i) => `<div class="ph"><img src="${f.url}" alt="Foto ${i + 1}"><button type="button" data-act="rm-photo" data-v="${i}" aria-label="Quitar foto">×</button></div>`).join("")}</div>`
+      : `<p class="hint">Toma una foto donde se vean la etiqueta y el código escrito.${canAI ? " La IA leerá la marca, el número de parte, los voltajes y para qué TV sirve." : ""}</p>`}
+    <div class="photo-cta">
+      <label class="btn ${R.fotos.length ? "" : "btn-accent"}">${ICON_CAM}<span>${R.fotos.length ? "Foto de cerca" : "Tomar foto"}</span><input class="vh" type="file" accept="image/*" capture="environment" data-role="r-photo"></label>
+      <label class="btn">${ICON_IMG}<span>Galería</span><input class="vh" type="file" accept="image/*" multiple data-role="r-photo"></label>
+    </div>
+    ${R.fotos.length > 1 && canAI && !R.aiBusy ? `<button class="btn btn-sm" type="button" data-act="ai-run">Leer de nuevo con todas las fotos</button>` : ""}
+    ${R.fotos.length === 1 && canAI && !R.aiBusy && !R.ai && !R.aiErr ? `<button class="btn btn-sm" type="button" data-act="ai-run">Leer con IA</button>` : ""}
+    ${R.fotos.length && R.aiErr && canAI ? `<button class="btn btn-sm" type="button" data-act="ai-run">Intentar de nuevo</button>` : ""}
+    ${!canAI && S.booted ? `<p class="sub">La lectura con IA no está disponible aquí. Llena los datos a mano.</p>` : ""}
+    ${!fotosOk && R.fotos.length ? `<p class="sub">Con tu acceso las fotos no se guardan en la ficha; los datos sí.</p>` : ""}
+    ${aiBlock}
+    ${dup}
+  </div>
+  <form id="r-form" class="card form" novalidate>
+    ${formHTML(R.form, "r-", "nuevo")}
+    ${R.saveErr ? `<div class="notice bad">${esc(R.saveErr)}</div>` : ""}
+    <button class="btn btn-accent btn-block" type="submit" ${R.saving || R.aiBusy ? "disabled" : ""}>${R.saving ? "Guardando…" : "Guardar fuente"}</button>
+  </form>`;
+  if (!R.form.codigo && R.form.marca) { $("#r-codigo").value = nextCode(prefijoDe(R.form.marca)); R.form.codeAuto = true; }
+}
+async function addPhotos(files) {
+  captureR();
+  const list = [...files].slice(0, 4 - R.fotos.length);
+  if (!list.length) { toast("Máximo 4 fotos por fuente."); return; }
+  for (const file of list) { const blob = await prepImage(file); R.fotos.push({ blob, url: URL.createObjectURL(blob) }); }
+  R.done = null;
+  renderRegistrar();
+  if (S.sample && S.aiImages && !S.aiOff && R.fotos.length === list.length) runAI();
+}
+async function runAI() {
+  captureR();
+  if (!R.fotos.length) return;
+  R.ctl?.abort();
+  const ctl = new AbortController();
+  R.ctl = ctl; R.aiBusy = true; R.aiErr = ""; renderRegistrar();
+  try {
+    const raw = await S.sample.json(PROMPT_LEER, { images: R.fotos.map((f) => f.blob), signal: ctl.signal });
+    if (R.ctl !== ctl) return;
+    applyAI(raw && typeof raw === "object" ? raw : {});
+  } catch (e) {
+    if (R.ctl !== ctl) return;
+    R.aiErr = aiErrMsg(e);
+  } finally {
+    if (R.ctl === ctl) { R.aiBusy = false; R.ctl = null; renderRegistrar(); }
+  }
+}
+function applyAI(a) {
+  captureR();
+  const f = R.form;
+  const s = (x) => (typeof x === "string" ? x.trim() : "");
+  R.ai = { notas: s(a.notas), confianzaLectura: s(a.confianzaLectura), confianzaCompatibilidad: s(a.confianzaCompatibilidad) };
+  if (s(a.marca)) f.marca = marcaCanon(a.marca);
+  if (s(a.numeroParte)) f.numeroParte = s(a.numeroParte).toUpperCase();
+  if (s(a.modeloPlaca)) f.modeloPlaca = s(a.modeloPlaca).toUpperCase();
+  if (arr(a.otrosCodigos).length) f.otrosCodigos = arr(a.otrosCodigos).map(String).join(", ");
+  if (s(a.voltajes)) f.voltajes = s(a.voltajes);
+  const pul = arr(a.pulgadas).map((x) => parseInt(x, 10)).filter((x) => x > 10 && x < 120);
+  if (pul.length) f.pulgadas = pul;
+  if (arr(a.tvCompatibles).length) f.tvCompatibles = arr(a.tvCompatibles).map(String).join(", ");
+  f.compatConfirmada = false;
+  R.ref = null;
+  const ref = S.refs.get(norm(f.numeroParte));
+  if (ref) {
+    R.ref = ref;
+    if (arr(ref.pulgadas).length) f.pulgadas = arr(ref.pulgadas).map(Number);
+    if (arr(ref.tvCompatibles).length) f.tvCompatibles = arr(ref.tvCompatibles).join(", ");
+    if (!f.voltajes && ref.voltajes) f.voltajes = ref.voltajes;
+    f.compatConfirmada = true;
+  }
+  const code = cleanCode(a.codigoEscrito);
+  R.dup = null;
+  if (code) { f.codigo = code; f.codeAuto = false; if (S.fuentes.has(code)) R.dup = code; }
+  else if (f.marca && (f.codeAuto || !f.codigo)) { f.codigo = nextCode(prefijoDe(f.marca)); f.codeAuto = true; }
+}
+async function claimAndSet(code, body) {
+  const ref = S.db.doc("fuentes/" + code);
+  let lease = { acquired: true };
+  try { lease = await ref.acquire({ holder: S.myId || ("v" + Math.random().toString(36).slice(2)), ttlMs: 8000 }); } catch {}
+  if (!lease.acquired) return false;
+  const snap = await ref.get();
+  if (snap.exists && snap.data()?.codigo) return false;
+  await ref.set(body);
+  return true;
+}
+async function guardarNueva() {
+  captureR();
+  const f = R.form;
+  R.saveErr = "";
+  if (!S.db) { R.saveErr = "Conectando con el inventario… intenta en unos segundos."; renderRegistrar(); return; }
+  if (!marcaCanon(f.marca)) { R.saveErr = "Elige la marca."; renderRegistrar(); $("#r-marca")?.focus(); return; }
+  const typed = String(f.codigo || "").trim();
+  let code = typed ? cleanCode(typed) : nextCode(prefijoDe(f.marca));
+  if (!code) { R.saveErr = "El código debe tener letras, guion y números, por ejemplo SAM-000001."; renderRegistrar(); return; }
+  const auto = !typed || (f.codeAuto && code === cleanCode(f.codigo));
+  if (S.fuentes.has(code) && !auto) { R.saveErr = `El código ${code} ya existe. Usa otro o deja el campo vacío para tomar el siguiente libre (${nextCode(prefijoDe(f.marca))}).`; R.dup = code; renderRegistrar(); return; }
+  R.saving = true; renderRegistrar();
+  const d = docFromForm(f);
+  const fotos = []; let warn = "";
+  if (S.assets) {
+    for (const p of R.fotos) {
+      try { const r = await S.assets.upload(p.blob, { type: "image/jpeg" }); fotos.push(r.id); }
+      catch (e) { warn = e?.code === "quota_or_state" ? "El espacio para fotos está lleno; la fuente se guardó sin algunas fotos." : "Algunas fotos no se pudieron guardar."; }
+    }
+  }
+  const now = Date.now();
+  try {
+    let ok = false;
+    for (let i = 0; i < 6 && !ok; i++) {
+      if (i > 0) { if (!auto) break; code = nextCode(prefijoDe(f.marca)); if (i > 1) code = code.replace(/\d+$/, (n) => String(+n + i - 1).padStart(6, "0")); }
+      ok = await claimAndSet(code, { ...d, codigo: code, prefijo: code.split("-")[0], fotos, creadoPor: S.myId || null, creadoEn: now, actualizadoEn: now,
+        historial: [histEntry("Registrada" + (d.caja ? " en " + d.caja : ""))] });
+    }
+    if (!ok) { R.saving = false; R.saveErr = `El código ${code} lo acaba de tomar otra persona. Cambia el código e intenta de nuevo.`; renderRegistrar(); return; }
+    if (d.caja && !S.cajas.has(d.caja)) { try { await S.db.doc("cajas/" + d.caja).set({ nombre: d.caja, creadaEn: now }); } catch {} }
+    if (S.isOwner && f.precio !== "") { try { await savePrecio(code, f.precio); } catch { warn = "La fuente se guardó, pero el precio no. Agrégalo desde la ficha."; } }
+    await saveRef(d);
+    R.fotos.forEach((p) => URL.revokeObjectURL(p.url));
+    const keep = { marca: d.marca, caja: d.caja };
+    R = freshR(keep);
+    R.done = { codigo: code, marca: d.marca, numeroParte: d.numeroParte, caja: d.caja, warn };
+    renderRegistrar();
+    window.scrollTo({ top: 0 });
+  } catch (e) {
+    R.saving = false; R.saveErr = dbErrMsg(e); renderRegistrar();
+  }
+}
+
+/* ---------- Render: Cajas ---------- */
+function renderCajas() {
+  const v = $("#v-cajas");
+  const cajas = allCajas();
+  const by = new Map(cajas.map((c) => [c, []]));
+  const sin = [];
+  for (const f of S.fuentes.values()) { if (f.estado === "vendida") continue; if (f.caja && by.has(f.caja)) by.get(f.caja).push(f); else if (!f.caja) sin.push(f); }
+  const card = (id, list, label) => {
+    const disp = list.filter((f) => f.estado === "disponible").length;
+    const marcas = [...new Set(list.map((f) => f.marca))].join(", ");
+    return `<button type="button" class="boxc" data-act="box" data-v="${esc(id)}" aria-expanded="${S.openBox === id}">
+      <span class="bname">${esc(label)}</span><span class="bn">${list.length}</span>
+      <span class="bs">${list.length ? `${disp} disponibles${marcas ? " · " + esc(marcas) : ""}` : "Vacía"}</span></button>`;
+  };
+  let detail = "";
+  if (S.openBox) {
+    const list = (S.openBox === "__sin" ? sin : by.get(S.openBox) || []).slice().sort(byCode);
+    detail = `<div class="group"><div class="g-head" style="grid-template-columns:1fr auto"><div><div class="g-part mono">${esc(S.openBox === "__sin" ? "Sin caja" : S.openBox)}</div><div class="g-sub">${list.length} ${list.length === 1 ? "fuente" : "fuentes"} (sin contar vendidas)</div></div>
+      <button class="btn btn-sm btn-ghost" type="button" data-act="box" data-v="${esc(S.openBox)}">Cerrar</button></div>
+      ${list.length ? `<ul class="units">${list.map((f) => `<li><button class="unit" type="button" data-act="open" data-v="${esc(f.codigo)}"><span class="code">${esc(f.codigo)}</span><span class="box">${esc(f.numeroParte || f.modeloPlaca)}</span><span class="right"><span class="pill st-${esc(f.estado)}">${esc(ESTADOS[f.estado])}</span><span class="price">${arr(f.pulgadas).map((p) => p + '"').join(" ")}</span></span></button></li>`).join("")}</ul>`
+        : `<p class="hint" style="padding:0 14px 14px">Esta caja está vacía. Asígnala al registrar una fuente.</p>`}</div>`;
+  }
+  v.innerHTML = `
+  <div class="card">
+    <div class="row-between"><h2>Cajas</h2>${S.canWrite !== false && !S.dbMissing ? `<button class="btn btn-sm btn-accent" type="button" data-act="new-box">Nueva caja (${esc(nextCaja())})</button>` : ""}</div>
+    <p class="hint">Escribe el número grande en dos lados de cada caja. Si puedes, guarda una sola marca por caja.</p>
+  </div>
+  ${cajas.length || sin.length ? `<div class="boxes">${cajas.map((c) => card(c, by.get(c), c)).join("")}${sin.length ? card("__sin", sin, "Sin caja") : ""}</div>` : `<div class="card empty"><h3>Todavía no hay cajas</h3><p class="hint">Crea la primera con el botón Nueva caja.</p></div>`}
+  ${detail}`;
+}
+async function crearCaja() {
+  const id = nextCaja();
+  try { await S.db.doc("cajas/" + id).set({ nombre: id, creadaEn: Date.now() }); toast(id + " creada"); S.openBox = id; renderCajas(); }
+  catch (e) { toast(dbErrMsg(e)); }
+}
+
+/* ---------- Ficha ---------- */
+function openFicha(code) { S.openCode = code; S.sheetMode = "ver"; S.confirmDelete = false; $("#sheet").hidden = false; renderSheet(); $("#sheet-panel").scrollTop = 0; }
+function closeFicha() { S.openCode = null; $("#sheet").hidden = true; $("#sheet-panel").innerHTML = ""; }
+function renderSheet(force) {
+  if (!S.openCode) return;
+  const panel = $("#sheet-panel");
+  if (!force && (S.sheetMode === "editar" || panel.contains(document.activeElement) && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))) return;
+  const f = S.fuentes.get(S.openCode);
+  if (!f) { panel.innerHTML = `<div class="sheet-head"><div class="grow"><span class="code big">${esc(S.openCode)}</span></div><button class="x" type="button" data-act="close" aria-label="Cerrar">×</button></div><p class="hint">Esta fuente ya no existe en el inventario.</p>`; return; }
+  const writable = S.canWrite !== false;
+  if (S.sheetMode === "editar") {
+    const base = { ...f, otrosCodigos: arr(f.otrosCodigos).join(", "), tvCompatibles: arr(f.tvCompatibles).join(", "), precio: precioDe(f.codigo) ?? "" };
+    panel.innerHTML = `<div class="sheet-head"><div class="grow"><span class="code big">${esc(f.codigo)}</span><span class="sub">Editar datos</span></div><button class="x" type="button" data-act="close" aria-label="Cerrar">×</button></div>
+      <form id="e-form" class="form" novalidate>${formHTML(base, "e-", "editar")}
+      <div id="e-err"></div>
+      <div class="row"><button class="btn btn-accent" type="submit">Guardar cambios</button><button class="btn" type="button" data-act="edit-cancel">Cancelar</button></div></form>`;
+    return;
+  }
+  const ref = f.parteNorm && S.refs.get(f.parteNorm);
+  const p = precioDe(f.codigo);
+  const hist = arr(f.historial).slice().reverse();
+  const row = (k, val, mono) => val ? `<dt>${k}</dt><dd${mono ? ' class="mono"' : ""}>${val}</dd>` : "";
+  const conf = f.compatConfirmada || !!ref;
+  const cajaOpts = `<option value="">Sin caja</option>` + allCajas().map((c) => `<option ${f.caja === c ? "selected" : ""}>${esc(c)}</option>`).join("") + `<option value="__nueva">+ Nueva caja (${esc(nextCaja())})</option>`;
+  panel.innerHTML = `
+  <div class="sheet-head"><div class="grow"><span class="code big">${esc(f.codigo)}</span><span class="pill st-${esc(f.estado)}">${esc(ESTADOS[f.estado])}</span></div><button class="x" type="button" data-act="close" aria-label="Cerrar">×</button></div>
+  ${arr(f.fotos).length ? `<div class="gallery">${arr(f.fotos).map((id) => `<img src="${blobSrc(id)}" alt="Foto de ${esc(f.codigo)}" loading="lazy">`).join("")}</div>` : ""}
+  <div class="row-between"><div><div class="sub">Precio de venta</div><div class="price-big">${p != null ? fmtCOP(p) : "Sin precio"}</div></div>
+    <div style="text-align:right"><div class="sub">Caja</div><div class="mono" style="font-size:18px;font-weight:600">${esc(f.caja || "Sin caja")}</div></div></div>
+  ${S.isOwner ? `<div class="row"><input id="s-precio" type="number" inputmode="numeric" min="0" step="1000" placeholder="Precio en pesos" value="${p ?? ""}" style="flex:1;min-width:140px"><button class="btn" type="button" data-act="save-price">Guardar precio</button></div>` : ""}
+  <dl class="specs">
+    ${row("Marca", esc(f.marca))}
+    ${row("Nº de parte", esc(f.numeroParte), true)}
+    ${row("Placa", esc(f.modeloPlaca), true)}
+    ${row("Otros códigos", esc(arr(f.otrosCodigos).join(", ")), true)}
+    ${row("Voltajes", esc(f.voltajes))}
+    ${row("Pulgadas", arr(f.pulgadas).map((x) => `<span class="tag tag-pcb">${esc(x)}"</span>`).join(" "))}
+    ${row("TV compatibles", esc(arr(f.tvCompatibles).join(", ")))}
+    ${arr(f.pulgadas).length || arr(f.tvCompatibles).length ? row("Compatibilidad", conf ? `<span class="tag tag-ok">Verificada</span>` : `<span class="tag tag-warn">Sugerida por IA, sin verificar</span>`) : ""}
+    ${row("Condición", esc(CONDICIONES[f.condicion] || ""))}
+    ${row("Notas", esc(f.notas))}
+  </dl>
+  ${ref && (arr(ref.tvCompatibles).join() !== arr(f.tvCompatibles).join() || arr(ref.pulgadas).join() !== arr(f.pulgadas).join()) ? `<div class="notice info">Tu equipo verificó esta referencia para ${esc(arr(ref.pulgadas).map((x) => x + '"').join(", "))} ${esc(arr(ref.tvCompatibles).join(", "))}.</div>` : ""}
+  ${writable ? `<div class="field"><span class="lbl">Cambiar estado</span><div class="state-btns">${Object.entries(ESTADOS).map(([k, l]) => `<button class="btn" type="button" data-act="estado" data-v="${k}" aria-pressed="${f.estado === k}">${l}</button>`).join("")}</div></div>
+  <div class="field"><label for="s-caja">Mover a caja</label><div class="row"><select id="s-caja" style="flex:1;min-width:140px">${cajaOpts}</select><button class="btn" type="button" data-act="move">Mover</button></div></div>` : ""}
+  <div class="field"><span class="lbl">Historial</span><ul class="hist">${hist.length ? hist.map((h) => `<li><time>${esc(fmtDate(h.t))}</time><span>${esc(h.a)}${h.u ? ` · <span data-uid="${esc(h.u)}"></span>` : ""}</span></li>`).join("") : `<li><span class="sub">Sin movimientos</span></li>`}</ul></div>
+  ${writable ? `<div class="row-between"><button class="btn" type="button" data-act="edit">Editar datos</button>
+    ${S.isOwner ? (S.confirmDelete ? `<div class="row"><span class="sub">¿Borrar ${esc(f.codigo)} para siempre?</span><button class="btn btn-danger-solid btn-sm" type="button" data-act="delete-yes">Sí, borrar</button><button class="btn btn-sm" type="button" data-act="delete-no">No</button></div>` : `<button class="btn btn-danger" type="button" data-act="delete">Borrar</button>`) : ""}</div>` : ""}`;
+  fillNames(panel);
+}
+async function fillNames(root) {
+  if (!S.user) return;
+  const els = $$("[data-uid]", root);
+  const ids = [...new Set(els.map((e) => e.dataset.uid))];
+  if (!ids.length) return;
+  try {
+    const ps = await S.user.profiles(ids);
+    for (const e of els) { const p = ps[e.dataset.uid]; e.textContent = p?.isMe ? "tú" : (p?.name || "alguien del equipo"); }
+  } catch {}
+}
+async function updateFuente(code, patch, accion) {
+  const f = S.fuentes.get(code);
+  if (!f) return;
+  const historial = [...arr(f.historial), histEntry(accion)].slice(-40);
+  await S.db.doc("fuentes/" + code).update({ ...patch, actualizadoEn: Date.now(), historial });
+}
+async function setEstado(code, estado) {
+  const f = S.fuentes.get(code);
+  if (!f || f.estado === estado) return;
+  const patch = { estado };
+  if (estado === "vendida") patch.vendidaEn = Date.now();
+  try { await updateFuente(code, patch, "Marcada como " + ESTADOS[estado].toLowerCase()); toast(code + ": " + ESTADOS[estado]); }
+  catch (e) { toast(dbErrMsg(e)); }
+}
+async function moverCaja(code, caja) {
+  const f = S.fuentes.get(code);
+  if (!f) return;
+  if (caja === "__nueva") { caja = nextCaja(); try { await S.db.doc("cajas/" + caja).set({ nombre: caja, creadaEn: Date.now() }); } catch (e) { toast(dbErrMsg(e)); return; } }
+  if ((f.caja || "") === caja) { toast("Ya está en " + (caja || "Sin caja")); return; }
+  try { await updateFuente(code, { caja }, caja ? "Movida a " + caja : "Sacada de la caja " + f.caja); toast(code + " → " + (caja || "Sin caja")); }
+  catch (e) { toast(dbErrMsg(e)); }
+}
+async function guardarEdicion() {
+  const f = S.fuentes.get(S.openCode);
+  if (!f) return;
+  const raw = readForm("e-", {});
+  const d = docFromForm(raw);
+  const errEl = $("#e-err");
+  try {
+    if (d.caja && !S.cajas.has(d.caja)) await S.db.doc("cajas/" + d.caja).set({ nombre: d.caja, creadaEn: Date.now() });
+    await updateFuente(f.codigo, d, "Datos editados");
+    if (S.isOwner && raw.precio !== undefined) await savePrecio(f.codigo, raw.precio);
+    await saveRef(d);
+    S.sheetMode = "ver"; renderSheet(true); toast("Cambios guardados");
+  } catch (e) { errEl.innerHTML = `<div class="notice bad">${esc(dbErrMsg(e))}</div>`; }
+}
+async function borrarFuente(code) {
+  const f = S.fuentes.get(code);
+  if (!f || !S.isOwner) return;
+  try {
+    await S.db.doc("fuentes/" + code).delete();
+    try { await S.db.doc("precios/" + code).delete(); } catch {}
+    if (S.assets) for (const id of arr(f.fotos)) { try { await S.assets.delete(id); } catch {} }
+    closeFicha(); toast(code + " borrada");
+  } catch (e) { toast(dbErrMsg(e)); }
+}
+
+/* ---------- Exportar ---------- */
+async function exportar() {
+  if (!S.downloads) return;
+  const cols = ["Código", "Marca", "Número de parte", "Modelo de placa", "Otros códigos", "Voltajes", "Pulgadas", "TV compatibles", "Compatibilidad", "Caja", "Estado", "Condición", "Precio", "Notas", "Registrada"];
+  const q = (v) => { const s = String(v ?? ""); return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const rows = [...S.fuentes.values()].sort(byCode).map((f) => [f.codigo, f.marca, f.numeroParte, f.modeloPlaca, arr(f.otrosCodigos).join(" / "), f.voltajes, arr(f.pulgadas).join(" / "),
+    arr(f.tvCompatibles).join(" / "), (f.compatConfirmada || S.refs.has(f.parteNorm)) ? "Verificada" : "Sugerida", f.caja, ESTADOS[f.estado], CONDICIONES[f.condicion], precioDe(f.codigo) ?? "", f.notas, fmtDate(f.creadoEn)]);
+  const csv = "﻿" + [cols, ...rows].map((r) => r.map(q).join(",")).join("\n");
+  const d = new Date().toISOString().slice(0, 10);
+  try { await S.downloads.save({ filename: `inventario-fuentes-${d}.csv`, data: csv }); toast("Archivo listo"); }
+  catch (e) { if (e?.code !== "declined") toast("No se pudo descargar el archivo aquí."); }
+}
+
+/* ---------- Navegación y render general ---------- */
+function setView(v) {
+  if (S.view === "registrar") captureR();
+  S.view = v;
+  for (const id of ["buscar", "registrar", "cajas"]) $("#v-" + id).hidden = id !== v;
+  $$(".tab").forEach((t) => t.toggleAttribute("aria-current", false));
+  const t = $(`.tab[data-view="${v}"]`); if (t) t.setAttribute("aria-current", "page");
+  if (v === "registrar") renderRegistrar();
+  if (v === "cajas") renderCajas();
+  if (v === "buscar") { renderFilters(); renderResults(); }
+  window.scrollTo({ top: 0 });
+}
+let rq = false;
+function scheduleRender() {
+  if (rq) return; rq = true;
+  requestAnimationFrame(() => {
+    rq = false;
+    renderStats(); renderNotice();
+    if (S.view === "buscar") { renderFilters(); renderResults(); if (S.ps && !S.ps.busy) renderPS(); }
+    if (S.view === "cajas") renderCajas();
+    if (S.view === "registrar") refreshRegistrarLive();
+    renderSheet();
+  });
+}
+function refreshRegistrarLive() {
+  // No re-pinta el formulario mientras escriben; solo actualiza lo que depende del inventario.
+  const sel = $("#r-caja");
+  if (sel && document.activeElement !== sel) {
+    const cur = sel.value;
+    const list = allCajas(); if (cur && cur !== "__nueva" && !list.includes(cur)) list.push(cur);
+    sel.innerHTML = `<option value="">Sin caja</option>` + list.map((c) => `<option>${esc(c)}</option>`).join("") + `<option value="__nueva">+ Nueva caja (${esc(nextCaja())})</option>`;
+    sel.value = [...sel.options].some((o) => o.value === cur) ? cur : "";
+  }
+  if (!$("#r-form") && !R.done) renderRegistrar();
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click", async (ev) => {
+  const t = ev.target.closest("[data-act], [data-view]");
+  if (!t) { if (ev.target === $("#sheet")) closeFicha(); return; }
+  if (t.dataset.view && t.classList.contains("tab")) { setView(t.dataset.view); return; }
+  const act = t.dataset.act, v = t.dataset.v;
+  switch (act) {
+    case "go": setView(v); break;
+    case "f-estado": S.fEstado = v; renderFilters(); renderResults(); break;
+    case "f-pulg": S.fPulg = S.fPulg === +v ? null : +v; renderFilters(); renderResults(); break;
+    case "f-marca": S.fMarca = S.fMarca === v ? null : v; renderFilters(); renderResults(); break;
+    case "open": openFicha(v); break;
+    case "close": closeFicha(); break;
+    case "pulg": t.setAttribute("aria-pressed", t.getAttribute("aria-pressed") !== "true"); break;
+    case "rm-photo": captureR(); URL.revokeObjectURL(R.fotos[+v]?.url); R.fotos.splice(+v, 1); renderRegistrar(); break;
+    case "reset": R.ctl?.abort(); R.fotos.forEach((p) => URL.revokeObjectURL(p.url)); R = freshR({ marca: R.form.marca, caja: R.form.caja }); renderRegistrar(); break;
+    case "ai-run": runAI(); break;
+    case "ai-stop": R.ctl?.abort(); break;
+    case "next-manual": R = freshR({ marca: R.done?.marca, caja: R.done?.caja }); renderRegistrar(); break;
+    case "ps-stop": S.ps?.ctl?.abort(); break;
+    case "ps-close": S.ps = null; renderPS(); break;
+    case "ps-register": {
+      const blob = S.ps?.blob; S.ps = null; renderPS();
+      R = freshR({ caja: R.form.caja });
+      if (blob) R.fotos.push({ blob, url: URL.createObjectURL(blob) });
+      setView("registrar");
+      if (blob && S.sample && S.aiImages && !S.aiOff) runAI();
+      break;
+    }
+    case "box": S.openBox = S.openBox === v ? null : v; renderCajas(); break;
+    case "new-box": crearCaja(); break;
+    case "estado": setEstado(S.openCode, v); break;
+    case "move": moverCaja(S.openCode, $("#s-caja").value); break;
+    case "save-price": {
+      const code = S.openCode;
+      try { await savePrecio(code, $("#s-precio").value); await updateFuente(code, {}, "Precio actualizado"); toast("Precio guardado"); renderSheet(true); }
+      catch (e) { toast(dbErrMsg(e)); }
+      break;
+    }
+    case "edit": S.sheetMode = "editar"; renderSheet(true); $("#sheet-panel").scrollTop = 0; break;
+    case "edit-cancel": S.sheetMode = "ver"; renderSheet(true); break;
+    case "delete": S.confirmDelete = true; renderSheet(true); break;
+    case "delete-no": S.confirmDelete = false; renderSheet(true); break;
+    case "delete-yes": borrarFuente(S.openCode); break;
+  }
+});
+document.addEventListener("change", (ev) => {
+  const t = ev.target;
+  if (t.matches('[data-role="r-photo"]') && t.files?.length) { addPhotos(t.files); t.value = ""; }
+  if (t.matches('[data-role="next-photo"]') && t.files?.length) { const files = [...t.files]; R = freshR({ marca: R.done?.marca, caja: R.done?.caja }); addPhotos(files); }
+  if (t.id === "photo-search" && t.files?.length) { buscarPorFoto(t.files[0]); t.value = ""; }
+  if (t.id === "r-marca") {
+    const c = $("#r-codigo");
+    if (c && (R.form.codeAuto || !c.value.trim())) { c.value = t.value ? nextCode(prefijoDe(t.value)) : ""; R.form.codeAuto = true; }
+  }
+  if (t.id === "r-codigo") R.form.codeAuto = false;
+  if ((t.id === "r-caja" || t.id === "e-caja") && t.value === "__nueva") {
+    const id = nextCaja();
+    const taken = new Set([...t.options].map((o) => o.value));
+    let n = +id.slice(5), nid = id;
+    while (taken.has(nid)) { n++; nid = "CAJA-" + String(n).padStart(2, "0"); }
+    t.insertBefore(new Option(nid, nid, true, true), t.lastElementChild);
+    t.value = nid;
+  }
+});
+document.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  if (ev.target.id === "r-form") guardarNueva();
+  if (ev.target.id === "e-form") guardarEdicion();
+});
+document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && S.openCode) closeFicha(); });
+let qT;
+$("#q").addEventListener("input", (ev) => { clearTimeout(qT); qT = setTimeout(() => { S.q = ev.target.value.trim(); renderResults(); }, 120); });
+$("#export-btn").addEventListener("click", exportar);
+
+/* ---------- Arranque ---------- */
+async function boot() {
+  renderStats(); renderFilters(); renderResults();
+  const use = (n) => (window.claude && typeof window.claude.use === "function") ? window.claude.use(n).catch(() => null) : Promise.resolve(null);
+  const [db, user, assets, sample, downloads] = await Promise.all(["db", "user", "assets", "sample", "downloads"].map(use));
+  Object.assign(S, { db, user, assets, sample, downloads });
+  if (sample) { try { const lim = await sample.limits(); S.aiImages = !!lim?.images; } catch { S.aiImages = false; } }
+  S.booted = true;
+  if (user) {
+    try { S.isOwner = await user.isOwner(); } catch {}
+    try { S.myId = await user.id(); } catch {}
+    try { S.canWrite = await user.can("data.write"); } catch {}
+  }
+  if (S.view === "registrar") renderRegistrar();
+  if (!db) { S.dbMissing = true; scheduleRender(); if (S.view === "registrar") renderRegistrar(); return; }
+  const slowT = setTimeout(() => { S.slow = true; renderNotice(); }, 10000);
+  const sub = (coll, map, key, filter) => db.collection(coll).onSnapshot((snap) => {
+    map.clear();
+    for (const d of snap.docs) { const val = d.data(); if (val && (!filter || filter(val))) map.set(d.id, val); }
+    if (key && !snap.metadata.fromCache) { S.ready[key] = true; S.slow = false; clearTimeout(slowT); }
+    scheduleRender();
+  }, (e) => {
+    if (key) { S.ready[key] = true; clearTimeout(slowT); }
+    if (e?.code !== "revoked") S.dbError = "Se perdió la conexión con el inventario. Recarga la página para reconectar.";
+    scheduleRender();
+  });
+  sub("fuentes", S.fuentes, "fuentes", (v) => !!v.codigo);
+  sub("precios", S.precios);
+  sub("cajas", S.cajas);
+  sub("referencias", S.refs);
+  scheduleRender();
+}
+boot();
+})();
+</script>
