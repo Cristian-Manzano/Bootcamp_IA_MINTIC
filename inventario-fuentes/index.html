@@ -290,21 +290,25 @@ const ICON_IMG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const PROMPT_LEER = `Eres un técnico experto en reparación de televisores. Las imágenes muestran una tarjeta fuente de poder (power supply board) de un TV, a veces con una foto de cerca de su etiqueta. Lee con cuidado todo el texto impreso en la placa, en sus etiquetas y lo escrito a mano.
 
 Busca:
-- Un código de inventario escrito a mano con marcador: 2 a 4 letras, guion y números (ejemplo SAM-000001). Puede estar repetido, girado o al revés.
+- Un código de inventario escrito a mano con marcador en un sticker blanco: 2 a 4 letras y 6 números (forma XXX-NNNNNN). Puede estar girado o al revés. Si NO ves ese sticker escrito a mano, codigoEscrito es null. Nunca inventes ni completes un código.
 - La marca (Samsung, LG, Sony, TCL, Hisense, Challenger, Kalley, Panasonic, Philips, AOC, Xiaomi, Hyundai, Caixun, JVC, Sharp u otra).
-- El número de parte principal. Samsung: BN44-xxxxxA; también aparece dentro del serial "SEC S/N: CN07BN4400754A..." como BN4400754A, que se escribe BN44-00754A. LG: EAX/EAY. Sony: APS-xxx o 1-xxx-xxx-xx. TCL, Hisense y otras: códigos como 40-xxxxx, RSAG7.820.xxxx, 81-PBExxx.
-- El modelo de la placa (ejemplo L40G0B_ESM, PD40AVF_CSM, L55S6_THS) y otros códigos impresos (ejemplo PSLF870G06A).
+- El número de parte principal. Samsung: BN44-NNNNNL (también BN94/BN96); el más confiable es el que aparece dentro del serial o etiqueta con QR, por ejemplo "CN07BN44NNNNNL..." se escribe BN44-NNNNNL. Copia los dígitos exactos que ves. LG: EAX/EAY. Sony: APS-xxx o 1-xxx-xxx-xx. TCL, Hisense y otras: códigos como 40-xxxxx, RSAG7.820.xxxx, 81-PBExxx.
+- El modelo de la placa (forma como LxxXX_XXX o PDxxXX_XXX) y otros códigos impresos (como PSLF...).
 - Los voltajes de salida impresos (ejemplo "13V 2.18A", "LED 148V 350mA").
 - Las pulgadas, si la placa las indica (L40 = 40", L55 = 55", una tabla con 50"/55"/58", o un texto como 40" 5K).
 
 Después, con tu conocimiento, sugiere los tamaños de pantalla y los modelos de TV con los que esta fuente es compatible. Si no estás seguro, deja la lista vacía y pon confianza baja. No inventes modelos.
 
 Responde solo con un objeto JSON con esta forma:
-{"codigoEscrito": "SAM-000001" o null, "marca": "Samsung", "numeroParte": "BN44-00754A", "modeloPlaca": "L40G0B_ESM", "otrosCodigos": ["PSLF870G06A"], "voltajes": "13V 2.18A · LED 148V 350mA", "pulgadas": [40], "tvCompatibles": ["UN40H5003"], "confianzaLectura": "alta", "confianzaCompatibilidad": "media", "notas": "frase corta en español sobre lo que no se pudo leer o las dudas"}
-Las confianzas son "alta", "media" o "baja". Usa null o [] cuando no sepas un dato.`;
+{"codigoEscrito": string o null, "marca": string o null, "numeroParte": string o null, "modeloPlaca": string o null, "otrosCodigos": [string], "voltajes": string o null, "pulgadas": [número], "tvCompatibles": [string], "confianzaLectura": "alta"|"media"|"baja", "confianzaCompatibilidad": "alta"|"media"|"baja", "notas": "frase corta en español sobre lo que no se pudo leer o las dudas"}
+Todos los valores deben salir de lo que ves en las fotos (excepto pulgadas y tvCompatibles sugeridos). Usa null o [] cuando no sepas un dato.`;
 
-const PROMPT_BUSCAR = `La imagen muestra una tarjeta fuente de poder de un TV. Lee el código de inventario escrito a mano con marcador (2 a 4 letras, guion y números, ejemplo SAM-000001; puede estar girado), la marca, el número de parte principal (Samsung: BN44-xxxxxA, que también aparece dentro del serial "SEC S/N: CN07BN4400754A..." como BN4400754A = BN44-00754A; LG: EAX/EAY; Sony: APS-xxx) y el modelo de la placa (ejemplo L40G0B_ESM).
-Responde solo con JSON: {"codigoEscrito": "SAM-000001" o null, "marca": "Samsung" o null, "numeroParte": "BN44-00754A" o null, "modeloPlaca": "L40G0B_ESM" o null}`;
+const PROMPT_BUSCAR = `La imagen muestra una tarjeta fuente de poder de un TV. Lee SOLO lo que realmente ves:
+- codigoEscrito: un código de inventario escrito a mano con marcador en un sticker blanco (forma XXX-NNNNNN). Si no hay ese sticker, null. Nunca lo inventes.
+- numeroParte: el número de parte principal. En Samsung es BN44-NNNNNL (o BN94/BN96); el más confiable está dentro del serial o la etiqueta con QR (por ejemplo "CN07BN44NNNNNL..." se escribe BN44-NNNNNL). Copia los dígitos y la letra final exactos.
+- modeloPlaca: el modelo impreso en la placa (forma como LxxXX_XXX o PDxxXX_XXX).
+- marca.
+Responde solo con JSON: {"codigoEscrito": string o null, "marca": string o null, "numeroParte": string o null, "modeloPlaca": string o null}`;
 
 /* ---------- Estado ---------- */
 const S = {
@@ -444,6 +448,7 @@ function filtered() {
     (S.fEstado === "todas" || f.estado === S.fEstado) &&
     (!S.fPulg || arr(f.pulgadas).map(Number).includes(S.fPulg)) &&
     (!S.fMarca || f.marca === S.fMarca) &&
+    (!S.psCodes || S.psCodes.has(f.codigo)) &&
     (!toks.length || (() => { const h = hayDe(f); return toks.every((t) => h.includes(t)); })())
   );
 }
@@ -523,12 +528,16 @@ function renderPS() {
   if (ps.busy) { el.innerHTML = `<div class="card"><div class="reading"><span class="spin"></span><span>Leyendo la foto… puede tardar unos segundos.</span></div><div><button class="btn btn-sm" type="button" data-act="ps-stop">Cancelar</button></div></div>`; return; }
   if (ps.err) { el.innerHTML = `<div class="notice bad">${esc(ps.err)}</div>`; return; }
   const r = ps.res || {};
-  const leido = [r.codigoEscrito, r.numeroParte, r.modeloPlaca].filter(Boolean);
-  const n = filtered().length;
+  const leido = [r.numeroParte, r.modeloPlaca, r.codigoEscrito].filter(Boolean);
+  const n = S.psCodes ? S.psCodes.size : 0;
+  const disp = S.psCodes ? [...S.psCodes].filter((c) => S.fuentes.get(c)?.estado === "disponible").length : 0;
+  const nombre = r.numeroParte || r.modeloPlaca || "esta fuente";
   el.innerHTML = `<div class="card">
-    <div class="row-between"><div><div class="sub">La IA leyó</div><div class="mono">${leido.length ? esc(leido.join(" · ")) : "Ningún código legible"}</div></div>
+    <div class="row-between"><div><div class="sub">La IA leyó en la foto</div><div class="mono">${leido.length ? esc(leido.join(" · ")) : "Ningún número legible"}</div></div>
     <button class="btn btn-sm btn-ghost" type="button" data-act="ps-close">Cerrar</button></div>
-    ${n ? `<p class="hint">Coincidencias abajo.</p>` : `<div class="notice">No tienes esta fuente registrada${S.fEstado === "disponible" ? " como disponible" : ""}.</div>
+    ${!leido.length ? `<div class="notice">No se pudo leer el número de parte. Toma una foto más de cerca de la etiqueta o del serial, o escribe el número en el buscador.</div>` :
+      n ? `<div class="notice ok">Sí la tienes: ${n} ${n === 1 ? "unidad" : "unidades"} de ${esc(nombre)} (${disp} ${disp === 1 ? "disponible" : "disponibles"}). Están abajo.</div>`
+      : `<div class="notice">No tienes ${esc(nombre)} en el inventario.</div>
       ${S.canWrite !== false ? `<div><button class="btn btn-accent btn-sm" type="button" data-act="ps-register">Registrarla con esta foto</button></div>` : ""}`}
   </div>`;
 }
@@ -542,10 +551,17 @@ async function buscarPorFoto(file) {
     const r = await S.sample.json(PROMPT_BUSCAR, { images: [blob], signal: ctl.signal });
     const res = r && typeof r === "object" ? r : {};
     S.ps = { res, blob };
+    const parte = norm(res.numeroParte);
+    const placa = norm(res.modeloPlaca);
+    const igual = (f) => parte
+      ? (f.parteNorm === parte || arr(f.otrosCodigos).some((o) => norm(o) === parte))
+      : (placa && norm(f.modeloPlaca) === placa);
+    const codes = new Set([...S.fuentes.values()].filter(igual).map((f) => f.codigo));
+    // El código escrito solo cuenta si la fuente registrada tiene el mismo número de parte que la foto.
     const code = cleanCode(res.codigoEscrito);
-    if (code && S.fuentes.has(code)) { S.ps = null; renderPS(); openFicha(code); return; }
-    const q = res.numeroParte || res.modeloPlaca || "";
-    S.q = q; $("#q").value = q; S.fEstado = "todas"; S.fPulg = null; S.fMarca = null;
+    if (code && S.fuentes.has(code) && (!(parte || placa) || igual(S.fuentes.get(code)))) codes.add(code);
+    S.psCodes = (parte || placa || codes.size) ? codes : null;
+    S.q = ""; $("#q").value = ""; S.fEstado = "todas"; S.fPulg = null; S.fMarca = null;
     renderFilters(); renderResults(); renderPS();
   } catch (e) {
     const m = aiErrMsg(e);
@@ -1071,9 +1087,9 @@ document.addEventListener("click", async (ev) => {
     case "ai-stop": R.ctl?.abort(); break;
     case "next-manual": R = freshR({ marca: R.done?.marca, caja: R.done?.caja }); renderRegistrar(); break;
     case "ps-stop": S.ps?.ctl?.abort(); break;
-    case "ps-close": S.ps = null; renderPS(); break;
+    case "ps-close": S.ps = null; S.psCodes = null; renderPS(); renderResults(); break;
     case "ps-register": {
-      const blob = S.ps?.blob; S.ps = null; renderPS();
+      const blob = S.ps?.blob; S.ps = null; S.psCodes = null; renderPS();
       R = freshR({ caja: R.form.caja });
       if (blob) R.fotos.push({ blob, url: URL.createObjectURL(blob) });
       setView("registrar");
@@ -1123,7 +1139,7 @@ document.addEventListener("submit", (ev) => {
 });
 document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && S.openCode) closeFicha(); });
 let qT;
-$("#q").addEventListener("input", (ev) => { clearTimeout(qT); qT = setTimeout(() => { S.q = ev.target.value.trim(); renderResults(); }, 120); });
+$("#q").addEventListener("input", (ev) => { clearTimeout(qT); if (S.psCodes) { S.psCodes = null; S.ps = null; renderPS(); } qT = setTimeout(() => { S.q = ev.target.value.trim(); renderResults(); }, 120); });
 $("#export-btn").addEventListener("click", exportar);
 
 /* ---------- Arranque ---------- */
